@@ -1,4 +1,6 @@
-# base
+# RChain Vote Project
+
+安装vuetify之后，在项目根目录中使用git clone
 
 ## Project setup
 
