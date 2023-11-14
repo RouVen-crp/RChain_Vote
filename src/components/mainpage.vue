@@ -27,6 +27,7 @@
           prepend-icon="mdi-send"
           title="Log Out"
           link
+          @click="LogOut()"
           >
           </v-list-item> 
 
@@ -43,13 +44,13 @@
   
             <v-card>
               <v-card-title>
-                <span class="text-h5">User Profile</span>
+                <span class="text-h5">Make an Agenda! </span>
               </v-card-title>
               <v-card-text>
                 <v-container>
                   <v-row>
   
-                    <v-col
+                    <!-- <v-col
                       cols="12"
                       sm="6"
                       md="6"
@@ -58,84 +59,54 @@
                       readonly
                       >
                     </v-text-field>
-                    </v-col>
+                    </v-col> -->
   
-                    <v-col
-                      cols="12"
-                      sm="6"
-                      md="6"
-                    >
+                    <v-col cols="12" sm="6" md="6">
                       <v-text-field
-                        label="Name of your new Agenda"
+                        label="Name of your new Agenda*"
                         hint="example: Please vote for Joe Biden!"
                         required
+                        clearable
+                        v-model="NameOf_NewAgenda"
                       ></v-text-field>
                     </v-col>
   
   
-                    <v-col cols="12">
+                    <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         label="Number of Votes in your new Agenda*"
                         required
+                        clearable
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12">
-                      <v-text-field
-                        label="Password*"
-                        type="password"
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                    >
-                      <v-select
-                        :items="['0-17', '18-29', '30-54', '54+']"
-                        label="Age*"
-                        required
-                      ></v-select>
-                    </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                    >
-                      <v-autocomplete
-                        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                        label="Interests"
-                        multiple
-                      ></v-autocomplete>
-                    </v-col>
+                    
                   </v-row>
                 </v-container>
-                <small>*indicates required field</small>
+                <small>*indicates required info</small>
               </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
+              
                 <v-btn
                   color="blue-darken-1"
                   variant="text"
+                  :ripple="{ class: 'text-red' }"
                   @click="dialognewagenda = false"
                 >
                   Close
                 </v-btn>
                 <v-btn
-                  color="blue-darken-1"
-                  variant="text"
-                  @click="dialognewagenda = false"
+                  color="blue-darken-4"
+                  :ripple="{ class: 'text-green' }"
+                  @click="submitAgenda()"
                 >
-                  Save
-                </v-btn>
-              </v-card-actions>
+                  Submit
+                </v-btn>  
+                
             </v-card>
-            
-  
+             
           </v-dialog>
 
             </v-list-item>
-          
-          
-        
+                 
         <v-list-item
         prepend-icon="mdi-alert-octagon"
         title="Help"
@@ -151,22 +122,23 @@
         <v-container
           class="py-8 px-6"
           fluid
+          v-model="AContainer"
         >
           <v-row>
             <v-col
-              v-for="card in cards"
+              v-for="card in Acards"
               :key="card.id"
               cols="12"
             >
             <!-- card是agenda -->
-              <v-card v-if="!isDeleted">
+            
+              <v-card>
                 <!-- toolbar是agenda的表头，包含删除功能 -->
                 <v-toolbar :title="card.title" density="compact">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
                       <!-- 添加投票Vote -->
                       <v-dialog
                       v-model="dialognewvote"
-                      persistent
                       width="1024"
                       >
                       <template v-slot:activator="{ props }">
@@ -179,11 +151,11 @@
                       </template>
                       <v-card>
                         <v-card-title>
-                          <span class="text-h5">User Profile</span>
+                          <span class="text-h5">Add Vote for current Agenda! </span>
                         </v-card-title>
                         <v-card-text>
                           <v-container>
-                            <v-row>
+                            <v-row >
 
                               <v-col
                                 cols="12"
@@ -191,7 +163,8 @@
                                 md="6"
                               >
                                 <v-text-field
-                                :label="card.title"
+                                :model-value="card.title"
+                                label="Your current agenda:"
                                 hint=""
                                 readonly
                                 >
@@ -204,68 +177,90 @@
                                 md="6"
                               >
                                 <v-text-field
-                                  label="Name of your new Agenda"
-                                  hint="example: Please vote for Joe Biden!"
+                                  label="Name for your new Vote: "
+                                  hint="example: Please vote for Donald Biden!"
                                   required
                                 ></v-text-field>
                               </v-col>
 
+                                <v-col cols="12" sm="6" md="8">
+                                  <v-select
+                                  :items="['1', '2', '3', '4']"
+                                    label="Number of Choices in your new Agenda*"
+                                    required
+                                    size="large"
+                                    align-self="center"
+                                    v-model="CreateVote_SelectedItem"
+                                  ></v-select>  
+                                </v-col>  
+                                <v-col cols="auto" sm="6" md="4">
+                                  <v-btn prepend-icon="mdi-check-circle" size="large" align-self="center" color="blue-darken-4"
+                                  @click=" dialogCreateVote = true"
+                                  >
+                                    Customize choices! 
+                                  </v-btn>
+                                </v-col>
+                                
 
-                              <v-col cols="12">
-                                <v-text-field
-                                  label="Number of Votes in your new Agenda*"
-                                  required
-                                ></v-text-field>
-                              </v-col>
-                              <v-col cols="12">
-                                <v-text-field
-                                  label="Password*"
-                                  type="password"
-                                  required
-                                ></v-text-field>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                sm="6"
-                              >
-                                <v-select
-                                  :items="['0-17', '18-29', '30-54', '54+']"
-                                  label="Age*"
-                                  required
-                                ></v-select>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                sm="6"
-                              >
-                                <v-autocomplete
-                                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                                  label="Interests"
-                                  multiple
-                                ></v-autocomplete>
-                              </v-col>
                             </v-row>
                           </v-container>
                           <small>*indicates required field</small>
                         </v-card-text>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn
-                            color="blue-darken-1"
-                            variant="text"
-                            @click="dialognewvote = false"
-                          >
-                            Close
-                          </v-btn>
-                          <v-btn
-                            color="blue-darken-1"
-                            variant="text"
-                            @click="dialognewvote = false"
-                          >
-                            Save
-                          </v-btn>
-                        </v-card-actions>
                       </v-card>
+
+                      <v-dialog
+                      v-model="dialogCreateVote"
+                      width="720">
+                      <v-list lines="two">
+
+                        <template v-for="i in VoteCount" :key="i">
+                          <v-list-item>
+
+                            <v-card :title="'Choice: '+i">
+
+                              <v-text-field
+                              label="Insert customized text here! "
+                              prefix="/"></v-text-field>
+
+                            </v-card>        
+
+                            <!-- <v-list-item-title :title="`Message ${n}`"></v-list-item-title>  -->
+        
+                            <!-- <v-list-item-subtitle title="imilique"></v-list-item-subtitle> -->
+                          </v-list-item>
+        
+                          <v-divider
+                            v-if="i !== VoteCount"
+                            :key="`divider-${n}`"
+                          ></v-divider>
+                        </template>
+
+                        <v-list-item>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn
+                              color="red-darken-1"
+                              variant="text"
+                              @click="dialogCreateVote = false"
+                              :ripple="{ class: 'text-red' }"
+                            >
+                              Discard
+                            </v-btn>
+                            <v-btn
+                              color="blue-darken-4"
+                              variant="text"
+                              @click="dialogCreateVote = false"
+                              :ripple="{ class: 'text-red' }"
+                            >
+                              SUBMIT
+                            </v-btn>
+                          </v-card-actions>
+                        </v-list-item>
+
+                      </v-list>
+                    
+                    </v-dialog>
+
                     </v-dialog>
           
                   <v-menu :location="end">
@@ -325,16 +320,6 @@
   <script setup>
     import { ref } from 'vue'
     import addVote from '@/components/AddVote.vue'
-    // const cards = [
-    //       {id: 1, title: 'Agenda1'},
-    //       {id: 2, title: 'Agenda2'},
-    //     ]
-    // const links = [
-    //     ['mdi-inbox-arrow-down', 'not decided'],
-    //     ['mdi-send', 'Create Vote'],
-    //     ['mdi-delete', 'Create Agenda'],
-    //     ['mdi-alert-octagon', 'Help'],
-    // ]
 
     const drawer = ref(null)
   </script>
@@ -344,12 +329,19 @@
       
 //下面是数据
       data: () => ({
+
+        VoteCount: 1,
+        CreateVote_SelectedItem: null,
         dialognewagenda: false,
         dialognewvote: false,
-        AgendaName: 'null',
-        cards: [
-          {id: 1, title: 'Agenda1'},
-          {id: 2, title: 'Agenda2'},
+        dialogCreateVote: false,
+
+        NameOf_NewAgenda: null,
+
+        Acards: [
+          {id: '1', title: 'Agenda1'},
+          {id: '2', title: 'Agenda2'},
+          {id: '3', title: 'agenda3'}
         ],
         drawer: null,
         links : [
@@ -360,21 +352,45 @@
     ],
       }),
 
+
+
 // 下面是方法
       methods: {
-      removeCard(cardID) {
-        const index = this.cards.findIndex((card) => card.id === cardID);
-        this.cards.splice(index, 1);
-      },
-      // print(card) {
+
+        submitAgenda() {
+          this.AddNewAgenda();
+          this.dialognewagenda = false;
         
-      //   alert(card.Array)
-      // }
+      },
+
+      AddNewAgenda() {
+        alert(this.NameOf_NewAgenda);
+        const newcard = {
+          id: this.Acards.length + 1,
+          title: this.NameOf_NewAgenda,
+        };
+        this.AContainer.Acards.push(newcard);
+        alert(JSON.stringify(this.Acards));
+      },
+
+      removeCard(cardID) {
+        const index = this.Acards.findIndex((card) => card.id === cardID);
+        this.Acards.splice(index, 1);
+      },
+      LogOut() {
+            this.$router.push({ path: '/LogAndReg' })
+        },
 
     },
+
     components: {
         addVote
+      },
+    computed: {
+      VoteCount() {
+        return parseInt(this.CreateVote_SelectedItem, 10);
       }
+    }  
     }
 
 
