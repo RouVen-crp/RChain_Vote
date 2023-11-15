@@ -4,12 +4,12 @@
       <!-- navigation-drawer是左侧导航栏 -->
 
       <v-navigation-drawer v-model="drawer"
-      
+      color="#3498db"
       >
         <v-card
           class="pa-4"
           variant="tonal"
-          color="#2979FF"
+          color="#ecf0f1"
         >
           <v-avatar
             class="mb-4"
@@ -17,8 +17,7 @@
             size="64"
           >
         </v-avatar>  
-  
-          <div>Username here</div>
+        <div text-color="#2c3e50">Username here</div>
         </v-card>
   
         <v-divider></v-divider>
@@ -26,9 +25,10 @@
         <v-list>
         
           <v-list-item
+          :color="ListColor"
           prepend-icon="mdi-send"
           title="Log Out"
-          color="#1C54B2"
+          color="black"
           link
           @click="LogOut()"
           >
@@ -36,6 +36,7 @@
 
           <v-list-item
             prepend-icon="mdi-send"
+            color="#3498db"
             title="Make an Agenda"  
             link>
 
@@ -45,24 +46,13 @@
             persistent
             width="1024">
   
-            <v-card color="#F5F5F5">
-              <v-card-title>
-                <span class="text-h5" color="#333333">Make an Agenda! </span>
+            <v-card color="#ecf0f1">
+              <v-card-title color="#2c3e50">
+                <span class="text-h5" color="#2c3e50">Make an Agenda! </span>
               </v-card-title>
               <v-card-text>
                 <v-container>
                   <v-row>
-  
-                    <!-- <v-col
-                      cols="12"
-                      sm="6"
-                      md="6"
-                    >
-                      <v-text-field
-                      readonly
-                      >
-                    </v-text-field>
-                    </v-col> -->
   
                     <v-col cols="12" sm="6" md="12" >
                       <v-text-field md="6"
@@ -91,7 +81,7 @@
               </v-card-text>
               
                 <v-btn
-                  color="blue-darken-1"
+                  color="#e74c3c"
                   variant="text"
                   :ripple="{ class: 'text-red' }"
                   @click="dialognewagenda = false"
@@ -99,7 +89,7 @@
                   Close
                 </v-btn>
                 <v-btn
-                  color="blue-darken-4"
+                  color="#3498db"
                   :ripple="{ class: 'text-green' }"
                   @click="submitAgenda(NameOf_NewAgenda)"
                 >
@@ -123,9 +113,10 @@
       </v-navigation-drawer>
 
       <!-- v-main是中间的主体部分 -->
-      <v-main>
+      <v-main :style="{ backgroundColor: containerColor }">
         <v-container
-          class="py-8 px-6"
+          class="py-8 px-6 #ecf0f1 "
+          :style="{ backgroundColor: containerColor }"
           fluid
           v-model="AContainer"
         >
@@ -135,12 +126,13 @@
               :key="AVote.Agda_Name"
               :id="AVote.Agda_Name"
               cols="12"
+              color="#ecf0f1"
             >
             <!-- card是agenda -->
             
               <v-card >
                 <!-- toolbar是agenda的表头，包含删除功能 -->
-                <v-toolbar :title="AVote.Agda_Name" density="compact">
+                <v-toolbar :title="AVote.Agda_Name" density="compact" color="#ecf0f1">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
                       <!-- 添加投票Vote -->
                       <v-dialog
@@ -171,9 +163,7 @@
                                 <v-text-field
                                 v-model="targetAgenda"
                                 label="Your target agenda:"
-                                hint=""
-                                >
-                              </v-text-field>
+                                hint="" />
                               </v-col>
 
                               <v-col
@@ -185,8 +175,7 @@
                                   label="Name for your new Vote: "
                                   hint="example: Please vote for Donald Biden!"
                                   required
-                                  v-model="NameOf_NewVote"
-                                ></v-text-field>
+                                  v-model="NameOf_NewVote" />
                               </v-col>
 
                                 <v-col cols="12" sm="6" md="8">
@@ -200,13 +189,11 @@
                                   ></v-select>  
                                 </v-col>  
                                 <v-col cols="auto" sm="6" md="4">
-                                  <v-btn prepend-icon="mdi-check-circle" size="large" align-self="center" color="blue-darken-4"
+                                  <v-btn prepend-icon="mdi-check-circle" size="large" align-self="center" color="#3498db"
                                   @click=" GiveVoteNum(AVote.Agda_Name)">
                                     Customize choices! 
                                   </v-btn>
                                 </v-col>
-                                
-
                             </v-row>
                           </v-container>
                           <small>*indicates required field</small>
@@ -245,7 +232,7 @@
                           <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn
-                              color="red-darken-1"
+                              color="#e74c3c"
                               variant="text"
                               @click="dialogCreateVote = false"
                               :ripple="{ class: 'text-red' }"
@@ -253,7 +240,7 @@
                               Discard
                             </v-btn>
                             <v-btn
-                              color="blue-darken-4"
+                              color="#3498db"
                               variant="text"
                               @click="CreateVote(UserInput, NameOf_NewVote, targetAgenda, vc)"
                               :ripple="{ class: 'text-green' }"
@@ -281,6 +268,7 @@
                       <!-- 删除议程Agenda -->
                         <v-btn
                     prepend-icon="mdi-delete"
+                    color="#e74c3c"
                     :ripple="{ class: 'text-red' }"                   
                     @click="removeCard(AVote.Agda_Name)">
                       Delete
@@ -323,6 +311,7 @@
     </v-app>
   </template>
   
+
   <script setup>
     import { ref } from 'vue'
     import addVote from '@/components/AddVote.vue'
@@ -338,6 +327,8 @@
 //下面是数据
       data: () => ({
 
+        containerColor: '#ecf0f1',
+        ListColor: '#2c3e50',
         // VotesOf_a_Agenda: [],
       VoteCount: 1,
       CreateVote_SelectedItem: null,
@@ -367,12 +358,6 @@
     ],
       UserInput: [],
       drawer: null,
-      links: [
-        ['mdi-inbox-arrow-down', 'not decided'],
-        ['mdi-send', 'Create Vote'],
-        ['mdi-delete', 'Create Agenda'],
-        ['mdi-alert-octagon', 'Help'],
-      ],
     }),
 
 
