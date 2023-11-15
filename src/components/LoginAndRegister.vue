@@ -81,14 +81,12 @@
                             <v-text-field
                               label="Userame"
                               name="Userame"
-                              prepend-icon="person"
                               type="text"
                               color="teal accent-3"
                             />
                             <v-text-field
                               label="PublicKey"
                               name="PublicKey"
-                              prepend-icon="email"
                               type="text"
                               color="teal accent-3"
                             />
@@ -97,8 +95,6 @@
                               id="password"
                               label="Password"
                               name="password"
-                              prepend-icon="lock"
-                              type="password"
                               color="teal accent-3"
                             />
                           </v-form>

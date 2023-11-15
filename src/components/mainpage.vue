@@ -4,10 +4,12 @@
       <!-- navigation-drawer是左侧导航栏 -->
 
       <v-navigation-drawer v-model="drawer"
+      
       >
         <v-card
           class="pa-4"
           variant="tonal"
+          color="#2979FF"
         >
           <v-avatar
             class="mb-4"
@@ -26,6 +28,7 @@
           <v-list-item
           prepend-icon="mdi-send"
           title="Log Out"
+          color="#1C54B2"
           link
           @click="LogOut()"
           >
@@ -33,7 +36,7 @@
 
           <v-list-item
             prepend-icon="mdi-send"
-            title="Make an Agenda"    
+            title="Make an Agenda"  
             link>
 
             <v-dialog
@@ -42,9 +45,9 @@
             persistent
             width="1024">
   
-            <v-card>
+            <v-card color="#F5F5F5">
               <v-card-title>
-                <span class="text-h5">Make an Agenda! </span>
+                <span class="text-h5" color="#333333">Make an Agenda! </span>
               </v-card-title>
               <v-card-text>
                 <v-container>
@@ -75,6 +78,7 @@
                     <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         label="Number of Votes in your new Agenda*"
+                        v-model="VoteNumOf_NewAg"
                         required
                         clearable
                       ></v-text-field>
@@ -126,15 +130,16 @@
         >
           <v-row>
             <v-col
-              v-for="card in Acards"
-              :key="card.id"
+              v-for="AVote in AVotes"
+              :key="AVote.Agda_Name"
+              :id="AVote.Agda_Name"
               cols="12"
             >
             <!-- card是agenda -->
             
-              <v-card>
+              <v-card >
                 <!-- toolbar是agenda的表头，包含删除功能 -->
-                <v-toolbar :title="card.title" density="compact">
+                <v-toolbar :title="AVote.Agda_Name" density="compact">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
                       <!-- 添加投票Vote -->
                       <v-dialog
@@ -163,7 +168,7 @@
                                 md="6"
                               >
                                 <v-text-field
-                                :model-value="card.title"
+                                :model-value="AVote.Agda_Name"
                                 label="Your current agenda:"
                                 hint=""
                                 readonly
@@ -180,13 +185,14 @@
                                   label="Name for your new Vote: "
                                   hint="example: Please vote for Donald Biden!"
                                   required
+                                  v-model="NameOf_NewVote"
                                 ></v-text-field>
                               </v-col>
 
                                 <v-col cols="12" sm="6" md="8">
                                   <v-select
                                   :items="['1', '2', '3', '4']"
-                                    label="Number of Choices in your new Agenda*"
+                                    label="Number of Choices in your new Vote*"
                                     required
                                     size="large"
                                     align-self="center"
@@ -195,8 +201,7 @@
                                 </v-col>  
                                 <v-col cols="auto" sm="6" md="4">
                                   <v-btn prepend-icon="mdi-check-circle" size="large" align-self="center" color="blue-darken-4"
-                                  @click=" dialogCreateVote = true"
-                                  >
+                                  @click=" GiveVoteNum(AVote.Agda_Name)">
                                     Customize choices! 
                                   </v-btn>
                                 </v-col>
@@ -220,6 +225,7 @@
 
                               <v-text-field
                               label="Insert customized text here! "
+                              v-model="UserInput[i]"
                               prefix="/"></v-text-field>
 
                             </v-card>        
@@ -249,8 +255,8 @@
                             <v-btn
                               color="blue-darken-4"
                               variant="text"
-                              @click="dialogCreateVote = false"
-                              :ripple="{ class: 'text-red' }"
+                              @click="CreateVote(UserInput, NameOf_NewVote, AVote.Agda_Name, vc)"
+                              :ripple="{ class: 'text-green' }"
                             >
                               SUBMIT
                             </v-btn>
@@ -276,7 +282,7 @@
                         <v-btn
                     prepend-icon="mdi-delete"
                     :ripple="{ class: 'text-red' }"                   
-                    @click="removeCard(card.id)">
+                    @click="removeCard(AVote.Agda_Name)">
                       Delete
                     </v-btn>
           
@@ -285,30 +291,30 @@
                 </v-toolbar>
                 
                 <!-- 下面是每个agenda的具体投票项目 -->
-                <v-list lines="two">
+                <v-list lines="one">
                   <!-- <v-list-subheader :title="card"></v-list-subheader> -->
-                  <template v-for="n in 6" :key="n">
-                    <v-list-item>
-                      <template v-slot:prepend>
+
+                  <!-- 下面的list-item里是agenda的具体投票项目中的具体选项 -->
+                  <template v-for="v in AVote.Vts_Of_Agda " :key="v.Vt_Name">
+                    <v-list-item >
+                      <v-list-item-title>{{ v.Vt_Name }}</v-list-item-title>
+                      <!-- <template v-slot:prepend>
                         <v-avatar color="grey-darken-1"></v-avatar>
-                      </template>
-  
-                      <v-list-item-title :title="`Message ${n}`"></v-list-item-title>
-  
-                      <!-- <v-list-item-subtitle title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique"></v-list-item-subtitle> -->
+                      </template> -->
+                        <v-select label="Select" multiple :items="v.Choices">
+
+                        </v-select>
                     </v-list-item>
   
-                    <v-divider
-                      v-if="n !== 6"
+                    <!-- <v-divider
+                      v-if="n !== AVote.vcount"
                       :key="`divider-${n}`"
                       inset
-                    ></v-divider>
+                    ></v-divider> -->
                   </template>
                 </v-list>
                 <!-- 提交按钮Submit -->
-                <v-btn align="right">
 
-                </v-btn> 
               </v-card>
             </v-col>
           </v-row>
@@ -322,6 +328,7 @@
     import addVote from '@/components/AddVote.vue'
 
     const drawer = ref(null)
+
   </script>
   
   <script>
@@ -330,52 +337,100 @@
 //下面是数据
       data: () => ({
 
-        VoteCount: 1,
-        CreateVote_SelectedItem: null,
-        dialognewagenda: false,
-        dialognewvote: false,
-        dialogCreateVote: false,
+        // VotesOf_a_Agenda: [],
+      VoteCount: 1,
+      CreateVote_SelectedItem: null,
+      dialognewagenda: false,
+      dialognewvote: false,
+      dialogCreateVote: false,
 
-        NameOf_NewAgenda: null,
-
-        Acards: [
-          {id: '1', title: 'Agenda1'},
-          {id: '2', title: 'Agenda2'},
-          {id: '3', title: 'agenda3'}
-        ],
-        drawer: null,
-        links : [
+      NameOf_NewAgenda: '',
+      AVotes: [
+        {
+          Agda_Name: 'eg', vcount: '4',
+          Vts_Of_Agda: [
+            {
+              Vt_Name: 'egvt', 
+              Choices: [
+                'c1', 'c2', 'c3', '...'
+              ]
+          },
+          {
+              Vt_Name: 'egvt2', 
+              Choices: [
+                'c1', 'c2', 'c3', '...'
+              ]
+          }
+        ]
+      }
+    ],
+      UserInput: [],
+      drawer: null,
+      links: [
         ['mdi-inbox-arrow-down', 'not decided'],
         ['mdi-send', 'Create Vote'],
         ['mdi-delete', 'Create Agenda'],
         ['mdi-alert-octagon', 'Help'],
-    ],
-      }),
+      ],
+    }),
 
 
 
 // 下面是方法
       methods: {
 
+        GiveVoteNum(Ag_name) {
+          this.dialogCreateVote = true;
+          // const num = parseInt(this.CreateVote_SelectedItem, 10);
+          // const index = this.AVotes.findIndex((card) => card.Agda_Name === Ag_name);
+          // this.AVotes[index][1] = num;
+        },
+
+        CreateVote(input, name, CurrentAgenda, vc) {
+        // alert(this.AVotes)
+        this.UserInput = [];
+        this.NameOf_NewVote = '';
+
+        for (let i = 0; i < this.AVotes.length; i++) {
+          if (this.AVotes[i].Agda_Name === CurrentAgenda) {
+            // 在找到的对象的 Vts_Of_Agda 数组中添加新数据
+            this.AVotes[i].Vts_Of_Agda.push({ Vt_Name: name, Choices: input });
+            break; // 找到匹配的 Agda_Name 后结束循环
+          }
+        }
+
+          // this.VotesOf_a_Agenda = [];
+          this.dialogCreateVote = false;
+          this.dialognewvote = false;
+          this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
+        },
+
         submitAgenda() {
           this.AddNewAgenda();
           this.dialognewagenda = false;
-        
+          this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
       },
 
       AddNewAgenda() {
-        alert(this.NameOf_NewAgenda);
+        console.log(JSON.stringify(this.AVotes))
         const newcard = {
-          id: this.Acards.length + 1,
-          title: this.NameOf_NewAgenda,
+          Agda_Name: this.NameOf_NewAgenda, vcount: this.VoteNumOf_NewAg,
+          Vts_Of_Agda: [
+            {
+              Vt_Name: 't', 
+              Choices: [
+                'c1', 'c2', 'c3', '...'
+              ]
+          }
+        ]
         };
-        this.AContainer.Acards.push(newcard);
-        alert(JSON.stringify(this.Acards));
+        this.AVotes.push(newcard);
+        this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
       },
 
       removeCard(cardID) {
-        const index = this.Acards.findIndex((card) => card.id === cardID);
-        this.Acards.splice(index, 1);
+        const index = this.AVotes.findIndex((card) => card.Agda_Name === cardID);
+        this.AVotes.splice(index, 1);
       },
       LogOut() {
             this.$router.push({ path: '/LogAndReg' })
