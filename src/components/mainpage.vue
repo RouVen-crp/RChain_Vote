@@ -78,6 +78,7 @@
                     <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         label="Number of Votes in your new Agenda*"
+                        v-model="VoteNumOf_NewAg"
                         required
                         clearable
                       ></v-text-field>
@@ -129,16 +130,16 @@
         >
           <v-row>
             <v-col
-              v-for="card in Acards"
-              :key="card.id"
-              :id="card.id"
+              v-for="AVote in AVotes"
+              :key="AVote.Agda_Name"
+              :id="AVote.Agda_Name"
               cols="12"
             >
             <!-- card是agenda -->
             
               <v-card >
                 <!-- toolbar是agenda的表头，包含删除功能 -->
-                <v-toolbar :title="card.title" density="compact">
+                <v-toolbar :title="AVote.Agda_Name" density="compact">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
                       <!-- 添加投票Vote -->
                       <v-dialog
@@ -167,7 +168,7 @@
                                 md="6"
                               >
                                 <v-text-field
-                                :model-value="card.title"
+                                :model-value="AVote.Agda_Name"
                                 label="Your current agenda:"
                                 hint=""
                                 readonly
@@ -200,7 +201,7 @@
                                 </v-col>  
                                 <v-col cols="auto" sm="6" md="4">
                                   <v-btn prepend-icon="mdi-check-circle" size="large" align-self="center" color="blue-darken-4"
-                                  @click=" dialogCreateVote = true">
+                                  @click=" GiveVoteNum(AVote.Agda_Name)">
                                     Customize choices! 
                                   </v-btn>
                                 </v-col>
@@ -254,8 +255,8 @@
                             <v-btn
                               color="blue-darken-4"
                               variant="text"
-                              @click="CreateVote(UserInput, NameOf_NewVote, card.title)"
-                              :ripple="{ class: 'text-red' }"
+                              @click="CreateVote(UserInput, NameOf_NewVote, AVote.Agda_Name, vc)"
+                              :ripple="{ class: 'text-green' }"
                             >
                               SUBMIT
                             </v-btn>
@@ -281,7 +282,7 @@
                         <v-btn
                     prepend-icon="mdi-delete"
                     :ripple="{ class: 'text-red' }"                   
-                    @click="removeCard(card.id)">
+                    @click="removeCard(AVote.Agda_Name)">
                       Delete
                     </v-btn>
           
@@ -294,30 +295,26 @@
                   <!-- <v-list-subheader :title="card"></v-list-subheader> -->
 
                   <!-- 下面的list-item里是agenda的具体投票项目中的具体选项 -->
-                  <template v-for="n in card.count" :key="n">
-                    <v-list-item>
-                      <template v-slot:prepend>
+                  <template v-for="v in AVote.Vts_Of_Agda " :key="v.Vt_Name">
+                    <v-list-item >
+                      <v-list-item-title>{{ v.Vt_Name }}</v-list-item-title>
+                      <!-- <template v-slot:prepend>
                         <v-avatar color="grey-darken-1"></v-avatar>
-                      </template>
-                        <v-select multiple >
+                      </template> -->
+                        <v-select label="Select" multiple :items="v.Choices">
 
                         </v-select>
-                      <!-- <v-list-item-subtitle title="hi"></v-list-item-subtitle> -->
-  
-                      <!-- <v-list-item-subtitle title="Lnduslique"></v-list-item-subtitle> -->
                     </v-list-item>
   
-                    <v-divider
-                      v-if="n !== 6"
+                    <!-- <v-divider
+                      v-if="n !== AVote.vcount"
                       :key="`divider-${n}`"
                       inset
-                    ></v-divider>
+                    ></v-divider> -->
                   </template>
                 </v-list>
                 <!-- 提交按钮Submit -->
-                <v-btn align="right">
 
-                </v-btn> 
               </v-card>
             </v-col>
           </v-row>
@@ -340,6 +337,7 @@
 //下面是数据
       data: () => ({
 
+        // VotesOf_a_Agenda: [],
       VoteCount: 1,
       CreateVote_SelectedItem: null,
       dialognewagenda: false,
@@ -347,17 +345,18 @@
       dialogCreateVote: false,
 
       NameOf_NewAgenda: '',
-      Acards: ref([
-        { id: 'Agenda1', title: 'Agenda1', count: 3},
-        { id: 'Agenda2', title: 'Agenda2', count: 4},
-        { id: 'agenda3', title: 'agenda3', count: 2}
-      ]),
-      AVote: [
+      AVotes: [
         {
-          Agda_Name: 'eg',
+          Agda_Name: 'eg', vcount: '4',
           Vts_Of_Agda: [
             {
-              Vt_Name: 'egvt',
+              Vt_Name: 'egvt', 
+              Choices: [
+                'c1', 'c2', 'c3', '...'
+              ]
+          },
+          {
+              Vt_Name: 'egvt2', 
               Choices: [
                 'c1', 'c2', 'c3', '...'
               ]
@@ -366,7 +365,6 @@
       }
     ],
       UserInput: [],
-      VotesOf_a_Agenda: [],
       drawer: null,
       links: [
         ['mdi-inbox-arrow-down', 'not decided'],
@@ -381,36 +379,58 @@
 // 下面是方法
       methods: {
 
-        CreateVote(input, name, CurrentAgenda) {
-          // alert(CurrentAgenda);
-          this.dialogCreateVote = false;
-          this.VotesOf_a_Agenda.push({name, input})
-          this.UserInput = [];
-          this.NameOf_NewVote = '';
-          this.AVote.push({CurrentAgenda, this: VotesOf_a_Agenda});
-          this.VotesOf_a_Agenda = [];
+        GiveVoteNum(Ag_name) {
+          this.dialogCreateVote = true;
+          // const num = parseInt(this.CreateVote_SelectedItem, 10);
+          // const index = this.AVotes.findIndex((card) => card.Agda_Name === Ag_name);
+          // this.AVotes[index][1] = num;
+        },
 
+        CreateVote(input, name, CurrentAgenda, vc) {
+        // alert(this.AVotes)
+        this.UserInput = [];
+        this.NameOf_NewVote = '';
+
+        for (let i = 0; i < this.AVotes.length; i++) {
+          if (this.AVotes[i].Agda_Name === CurrentAgenda) {
+            // 在找到的对象的 Vts_Of_Agda 数组中添加新数据
+            this.AVotes[i].Vts_Of_Agda.push({ Vt_Name: name, Choices: input });
+            break; // 找到匹配的 Agda_Name 后结束循环
+          }
+        }
+
+          // this.VotesOf_a_Agenda = [];
+          this.dialogCreateVote = false;
+          this.dialognewvote = false;
+          this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
         },
 
         submitAgenda() {
           this.AddNewAgenda();
           this.dialognewagenda = false;
-          this.Acards = [...this.Acards]; // 触发 Acards 的重新渲染
+          this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
       },
 
       AddNewAgenda() {
-        console.log(JSON.stringify(this.Acards))
+        console.log(JSON.stringify(this.AVotes))
         const newcard = {
-          id: this.NameOf_NewAgenda,
-          title: this.NameOf_NewAgenda,
+          Agda_Name: this.NameOf_NewAgenda, vcount: this.VoteNumOf_NewAg,
+          Vts_Of_Agda: [
+            {
+              Vt_Name: 't', 
+              Choices: [
+                'c1', 'c2', 'c3', '...'
+              ]
+          }
+        ]
         };
-        this.Acards.push(newcard);
-        this.Acards = [...this.Acards]; // 触发 Acards 的重新渲染
+        this.AVotes.push(newcard);
+        this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
       },
 
       removeCard(cardID) {
-        const index = this.Acards.findIndex((card) => card.id === cardID);
-        this.Acards.splice(index, 1);
+        const index = this.AVotes.findIndex((card) => card.Agda_Name === cardID);
+        this.AVotes.splice(index, 1);
       },
       LogOut() {
             this.$router.push({ path: '/LogAndReg' })
