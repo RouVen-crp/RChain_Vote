@@ -51,3 +51,191 @@
                                   required
                                 ></v-text-field>
                               </v-col>
+
+
+                              <v-col cols="12">
+                      <v-text-field
+                        label="Password*"
+                        type="password"
+                        required
+                      ></v-text-field>
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                    >
+                      <v-select
+                        :items="['0-17', '18-29', '30-54', '54+']"
+                        label="Age*"
+                        required
+                      ></v-select>
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                    >
+                      <v-autocomplete
+                        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+                        label="Interests"
+                        multiple
+                      ></v-autocomplete>
+                    </v-col>
+
+
+
+                          addComponent(Aname) {
+        // 创建新组件并将其添加到对应卡片的组件容器中
+        const component = new Vue({
+          render: h => h(NewComponent)
+        }).$mount();
+
+        this.$refs.componentContainer[Aname - 1].appendChild(component.$el);
+        this.components.push(component);
+      },
+      beforeDestroy() {
+        this.components.forEach(component => {
+          component.$destroy();
+        });
+      },
+
+            mounted() {
+      eventBus.$on('add-agenda', Aname => {
+        this.addComponent(Aname);
+    });
+  },
+
+            AddNewAgenda() {
+        eventBus.$emit('add-agenda', this.NameOf_NewAgenda);
+      },
+
+
+
+
+
+
+                        <v-dialog
+                      v-model="dialognewvote"
+                      width="1024"
+                      >
+                      <template v-slot:activator="{ props }">
+                        <v-btn
+                          color="primary"
+                          v-bind="props"
+                        >
+                          Add Vote
+                        </v-btn>
+                      </template>
+                      <v-card>
+                        <v-card-title>
+                          <span class="text-h5">Add Vote for current Agenda! </span>
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container>
+                            <v-row >
+
+                              <v-col
+                                cols="12"
+                                sm="6"
+                                md="6"
+                              >
+                                <v-text-field
+                                :model-value="AVote.Agda_Name"
+                                label="Your current agenda:"
+                                hint=""
+                                readonly
+                                >
+                              </v-text-field>
+                              </v-col>
+
+                              <v-col
+                                cols="12"
+                                sm="6"
+                                md="6"
+                              >
+                                <v-text-field
+                                  label="Name for your new Vote: "
+                                  hint="example: Please vote for Donald Biden!"
+                                  required
+                                  v-model="NameOf_NewVote"
+                                ></v-text-field>
+                              </v-col>
+
+                                <v-col cols="12" sm="6" md="8">
+                                  <v-select
+                                  :items="['1', '2', '3', '4']"
+                                    label="Number of Choices in your new Vote*"
+                                    required
+                                    size="large"
+                                    align-self="center"
+                                    v-model="CreateVote_SelectedItem"
+                                  ></v-select>  
+                                </v-col>  
+                                <v-col cols="auto" sm="6" md="4">
+                                  <v-btn prepend-icon="mdi-check-circle" size="large" align-self="center" color="blue-darken-4"
+                                  @click=" GiveVoteNum(AVote.Agda_Name)">
+                                    Customize choices! 
+                                  </v-btn>
+                                </v-col>
+                                
+
+                            </v-row>
+                          </v-container>
+                          <small>*indicates required field</small>
+                        </v-card-text>
+                      </v-card>
+
+                      <v-dialog
+                      v-model="dialogCreateVote"
+                      width="720">
+                      <v-list lines="two">
+
+                        <template v-for="i in VoteCount" :key="i">
+                          <v-list-item>
+
+                            <v-card :title="'Choice: '+i">
+
+                              <v-text-field
+                              label="Insert customized text here! "
+                              v-model="UserInput[i]"
+                              prefix="/"></v-text-field>
+
+                            </v-card>        
+
+                            <!-- <v-list-item-title :title="`Message ${n}`"></v-list-item-title>  -->
+        
+                            <!-- <v-list-item-subtitle title="imilique"></v-list-item-subtitle> -->
+                          </v-list-item>
+        
+                          <v-divider
+                            v-if="i !== VoteCount"
+                            :key="`divider-${n}`"
+                          ></v-divider>
+                        </template>
+
+                        <v-list-item>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn
+                              color="red-darken-1"
+                              variant="text"
+                              @click="dialogCreateVote = false"
+                              :ripple="{ class: 'text-red' }"
+                            >
+                              Discard
+                            </v-btn>
+                            <v-btn
+                              color="blue-darken-4"
+                              variant="text"
+                              @click="CreateVote(UserInput, NameOf_NewVote, AVote.Agda_Name, vc)"
+                              :ripple="{ class: 'text-green' }"
+                            >
+                              SUBMIT
+                            </v-btn>
+                          </v-card-actions>
+                        </v-list-item>
+
+                      </v-list>
+                    
+                    </v-dialog>
+
+                    </v-dialog>
