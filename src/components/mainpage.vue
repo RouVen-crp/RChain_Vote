@@ -64,8 +64,9 @@
                     </v-text-field>
                     </v-col> -->
   
-                    <v-col cols="12" sm="6" md="6">
-                      <v-text-field
+                    <v-col cols="12" sm="6" md="12" >
+                      <v-text-field md="6"
+                        align-self="center"
                         label="Name of your new Agenda*"
                         hint="example: Please vote for Joe Biden!"
                         required
@@ -75,14 +76,14 @@
                     </v-col>
   
   
-                    <v-col cols="12" sm="6" md="6">
+                    <!-- <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         label="Number of Votes in your new Agenda*"
                         v-model="VoteNumOf_NewAg"
                         required
                         clearable
                       ></v-text-field>
-                    </v-col>
+                    </v-col> -->
                     
                   </v-row>
                 </v-container>
@@ -100,7 +101,7 @@
                 <v-btn
                   color="blue-darken-4"
                   :ripple="{ class: 'text-green' }"
-                  @click="submitAgenda()"
+                  @click="submitAgenda(NameOf_NewAgenda)"
                 >
                   Submit
                 </v-btn>  
@@ -168,10 +169,9 @@
                                 md="6"
                               >
                                 <v-text-field
-                                :model-value="AVote.Agda_Name"
-                                label="Your current agenda:"
+                                v-model="targetAgenda"
+                                label="Your target agenda:"
                                 hint=""
-                                readonly
                                 >
                               </v-text-field>
                               </v-col>
@@ -255,7 +255,7 @@
                             <v-btn
                               color="blue-darken-4"
                               variant="text"
-                              @click="CreateVote(UserInput, NameOf_NewVote, AVote.Agda_Name, vc)"
+                              @click="CreateVote(UserInput, NameOf_NewVote, targetAgenda, vc)"
                               :ripple="{ class: 'text-green' }"
                             >
                               SUBMIT
@@ -326,6 +326,7 @@
   <script setup>
     import { ref } from 'vue'
     import addVote from '@/components/AddVote.vue'
+    import cloneDeep from 'lodash/cloneDeep';
 
     const drawer = ref(null)
 
@@ -347,7 +348,7 @@
       NameOf_NewAgenda: '',
       AVotes: [
         {
-          Agda_Name: 'eg', vcount: '4',
+          Agda_Name: 'eg', vcount: '2',
           Vts_Of_Agda: [
             {
               Vt_Name: 'egvt', 
@@ -392,6 +393,8 @@
         this.NameOf_NewVote = '';
 
         for (let i = 0; i < this.AVotes.length; i++) {
+          console.log('CurrentAgenda:', CurrentAgenda);
+          console.log('this.AVotes[i].Agda_Name:', this.AVotes[i].Agda_Name);
           if (this.AVotes[i].Agda_Name === CurrentAgenda) {
             // 在找到的对象的 Vts_Of_Agda 数组中添加新数据
             this.AVotes[i].Vts_Of_Agda.push({ Vt_Name: name, Choices: input });
@@ -405,27 +408,21 @@
           this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
         },
 
-        submitAgenda() {
-          this.AddNewAgenda();
+        submitAgenda(name) {
+          this.AddNewAgenda(name);
           this.dialognewagenda = false;
-          this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
       },
 
-      AddNewAgenda() {
+      AddNewAgenda(name) {
         console.log(JSON.stringify(this.AVotes))
         const newcard = {
-          Agda_Name: this.NameOf_NewAgenda, vcount: this.VoteNumOf_NewAg,
-          Vts_Of_Agda: [
-            {
-              Vt_Name: 't', 
-              Choices: [
-                'c1', 'c2', 'c3', '...'
-              ]
-          }
-        ]
+          Agda_Name: name, 
+          vcount: 0,
+          Vts_Of_Agda: [],
         };
-        this.AVotes.push(newcard);
-        this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
+        this.AVotes.push(cloneDeep(newcard));
+        // 触发 AVotes 的重新渲染
+         this.AVotes = [...this.AVotes]; 
       },
 
       removeCard(cardID) {
