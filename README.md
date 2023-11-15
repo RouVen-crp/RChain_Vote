@@ -1,6 +1,7 @@
 # RChain Vote Project
 
-安装vuetify之后，在项目根目录中使用git clone
+在你希望的作为项目根目录的文件夹中使用git clone
+然后再进行下列的Project Setup步骤
 
 ## Project setup
 
