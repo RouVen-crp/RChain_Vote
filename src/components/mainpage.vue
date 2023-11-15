@@ -4,10 +4,12 @@
       <!-- navigation-drawer是左侧导航栏 -->
 
       <v-navigation-drawer v-model="drawer"
+      
       >
         <v-card
           class="pa-4"
           variant="tonal"
+          color="#2979FF"
         >
           <v-avatar
             class="mb-4"
@@ -26,6 +28,7 @@
           <v-list-item
           prepend-icon="mdi-send"
           title="Log Out"
+          color="#1C54B2"
           link
           @click="LogOut()"
           >
@@ -33,7 +36,7 @@
 
           <v-list-item
             prepend-icon="mdi-send"
-            title="Make an Agenda"    
+            title="Make an Agenda"  
             link>
 
             <v-dialog
@@ -42,9 +45,9 @@
             persistent
             width="1024">
   
-            <v-card>
+            <v-card color="#F5F5F5">
               <v-card-title>
-                <span class="text-h5">Make an Agenda! </span>
+                <span class="text-h5" color="#333333">Make an Agenda! </span>
               </v-card-title>
               <v-card-text>
                 <v-container>
@@ -128,11 +131,12 @@
             <v-col
               v-for="card in Acards"
               :key="card.id"
+              :id="card.id"
               cols="12"
             >
             <!-- card是agenda -->
             
-              <v-card>
+              <v-card >
                 <!-- toolbar是agenda的表头，包含删除功能 -->
                 <v-toolbar :title="card.title" density="compact">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
@@ -180,13 +184,14 @@
                                   label="Name for your new Vote: "
                                   hint="example: Please vote for Donald Biden!"
                                   required
+                                  v-model="NameOf_NewVote"
                                 ></v-text-field>
                               </v-col>
 
                                 <v-col cols="12" sm="6" md="8">
                                   <v-select
                                   :items="['1', '2', '3', '4']"
-                                    label="Number of Choices in your new Agenda*"
+                                    label="Number of Choices in your new Vote*"
                                     required
                                     size="large"
                                     align-self="center"
@@ -195,8 +200,7 @@
                                 </v-col>  
                                 <v-col cols="auto" sm="6" md="4">
                                   <v-btn prepend-icon="mdi-check-circle" size="large" align-self="center" color="blue-darken-4"
-                                  @click=" dialogCreateVote = true"
-                                  >
+                                  @click=" dialogCreateVote = true">
                                     Customize choices! 
                                   </v-btn>
                                 </v-col>
@@ -220,6 +224,7 @@
 
                               <v-text-field
                               label="Insert customized text here! "
+                              v-model="UserInput[i]"
                               prefix="/"></v-text-field>
 
                             </v-card>        
@@ -249,7 +254,7 @@
                             <v-btn
                               color="blue-darken-4"
                               variant="text"
-                              @click="dialogCreateVote = false"
+                              @click="CreateVote(UserInput, NameOf_NewVote, card.title)"
                               :ripple="{ class: 'text-red' }"
                             >
                               SUBMIT
@@ -285,17 +290,21 @@
                 </v-toolbar>
                 
                 <!-- 下面是每个agenda的具体投票项目 -->
-                <v-list lines="two">
+                <v-list lines="one">
                   <!-- <v-list-subheader :title="card"></v-list-subheader> -->
-                  <template v-for="n in 6" :key="n">
+
+                  <!-- 下面的list-item里是agenda的具体投票项目中的具体选项 -->
+                  <template v-for="n in card.count" :key="n">
                     <v-list-item>
                       <template v-slot:prepend>
                         <v-avatar color="grey-darken-1"></v-avatar>
                       </template>
+                        <v-select multiple >
+
+                        </v-select>
+                      <!-- <v-list-item-subtitle title="hi"></v-list-item-subtitle> -->
   
-                      <v-list-item-title :title="`Message ${n}`"></v-list-item-title>
-  
-                      <!-- <v-list-item-subtitle title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique"></v-list-item-subtitle> -->
+                      <!-- <v-list-item-subtitle title="Lnduslique"></v-list-item-subtitle> -->
                     </v-list-item>
   
                     <v-divider
@@ -322,6 +331,7 @@
     import addVote from '@/components/AddVote.vue'
 
     const drawer = ref(null)
+
   </script>
   
   <script>
@@ -330,47 +340,72 @@
 //下面是数据
       data: () => ({
 
-        VoteCount: 1,
-        CreateVote_SelectedItem: null,
-        dialognewagenda: false,
-        dialognewvote: false,
-        dialogCreateVote: false,
+      VoteCount: 1,
+      CreateVote_SelectedItem: null,
+      dialognewagenda: false,
+      dialognewvote: false,
+      dialogCreateVote: false,
 
-        NameOf_NewAgenda: null,
-
-        Acards: [
-          {id: '1', title: 'Agenda1'},
-          {id: '2', title: 'Agenda2'},
-          {id: '3', title: 'agenda3'}
-        ],
-        drawer: null,
-        links : [
+      NameOf_NewAgenda: '',
+      Acards: ref([
+        { id: 'Agenda1', title: 'Agenda1', count: 3},
+        { id: 'Agenda2', title: 'Agenda2', count: 4},
+        { id: 'agenda3', title: 'agenda3', count: 2}
+      ]),
+      AVote: [
+        {
+          Agda_Name: 'eg',
+          Vts_Of_Agda: [
+            {
+              Vt_Name: 'egvt',
+              Choices: [
+                'c1', 'c2', 'c3', '...'
+              ]
+          }
+        ]
+      }
+    ],
+      UserInput: [],
+      VotesOf_a_Agenda: [],
+      drawer: null,
+      links: [
         ['mdi-inbox-arrow-down', 'not decided'],
         ['mdi-send', 'Create Vote'],
         ['mdi-delete', 'Create Agenda'],
         ['mdi-alert-octagon', 'Help'],
-    ],
-      }),
+      ],
+    }),
 
 
 
 // 下面是方法
       methods: {
 
+        CreateVote(input, name, CurrentAgenda) {
+          // alert(CurrentAgenda);
+          this.dialogCreateVote = false;
+          this.VotesOf_a_Agenda.push({name, input})
+          this.UserInput = [];
+          this.NameOf_NewVote = '';
+          this.AVote.push({CurrentAgenda, this: VotesOf_a_Agenda});
+          this.VotesOf_a_Agenda = [];
+
+        },
+
         submitAgenda() {
           this.AddNewAgenda();
           this.dialognewagenda = false;
-        
+          this.Acards = [...this.Acards]; // 触发 Acards 的重新渲染
       },
 
       AddNewAgenda() {
-        alert(this.NameOf_NewAgenda);
+        console.log(JSON.stringify(this.Acards))
         const newcard = {
-          id: this.Acards.length + 1,
+          id: this.NameOf_NewAgenda,
           title: this.NameOf_NewAgenda,
         };
-        this.AContainer.Acards.push(newcard);
-        alert(JSON.stringify(this.Acards));
+        this.Acards.push(newcard);
+        this.Acards = [...this.Acards]; // 触发 Acards 的重新渲染
       },
 
       removeCard(cardID) {
