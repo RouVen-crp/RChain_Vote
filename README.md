@@ -5,9 +5,13 @@
 在你希望的作为项目根目录的文件夹中使用如下命令
 
 ```
-git clone https://github.com/RouVen-crp/RChain_Vote_Frontend.git
+git clone git@github.com:RouVen-crp/RChain_Vote.git
 ```
-
+如果没有ssh key可以考虑使用
+```
+git clone https://github.com/RouVen-crp/RChain_Vote.git
+```
+不保证成功，笔者尝试经常网络连接失败
 然后再进行下列的Project Setup步骤
 
 ## Project setup
