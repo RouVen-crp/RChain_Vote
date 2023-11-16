@@ -1,6 +1,9 @@
 # RChain Vote Project
 
-在你希望的作为项目根目录的文件夹中使用git clone
+在你希望的作为项目根目录的文件夹中使用如下命令
+```
+git clone https://github.com/RouVen-crp/RChain_Vote.git
+```
 然后再进行下列的Project Setup步骤
 
 ## Project setup
