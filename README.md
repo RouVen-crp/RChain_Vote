@@ -12,7 +12,7 @@ git clone git@github.com:RouVen-crp/RChain_Vote.git
 git clone https://github.com/RouVen-crp/RChain_Vote.git
 ```
 不保证成功，笔者尝试经常网络连接失败
-然后再进行下列的Project Setup步骤
+然后进入RChain_Vote_Frontend进行下列的前端Setup步骤
 
 ## Project setup
 
