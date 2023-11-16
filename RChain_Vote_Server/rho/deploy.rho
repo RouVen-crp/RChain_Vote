@@ -1,0 +1,92 @@
+/*new message in {
+	
+	contract @{"global_factory"}(getInfo, setInfo) = {
+		contract getInfo(ret) = {
+			for (msg <- message){
+				ret!(*msg)
+				|
+				message!(*msg)
+			}
+		}
+		|
+		contract setInfo(newMessage) = {
+			for (msg <- message) {
+				message!(*newMessage)
+			}
+		}
+	}
+	|
+	message!("Hello")
+}*/
+
+new userinfo,print(`rho:io:stdout`),ret in {
+userinfo!({"1":"1"})|
+	contract @{"usr_factory"}(register, login) = {
+		
+	
+		contract register(id,password,ret) = {
+			for(@message <- userinfo){
+				if(message.contains(*id)){
+					ret!("false")
+					|
+					userinfo!(message)
+					}
+				else
+				{
+			 userinfo!(message.union({*id:*password}))
+			 |
+			 print!(message.union({*id:*password}))
+			 |
+			 ret!("success")
+			    }
+			}
+			//userinfo.union({*publickey, "testusrName"})
+
+		}
+		|
+		contract login(id,password,ret) = {
+            //for (@message <- userinfo){
+               // print!(message)
+				//|
+				//userinfo!(message)
+           // }
+            //|
+		
+			
+            for(@message <- userinfo) {
+				print!(message)
+				|
+				
+				
+                if(message.contains(*id)) 
+				{
+                   if(message.get(*id)== *password)
+				    {
+					print!("Login Success") 
+					|
+                    ret!(message.get(*id))
+					|
+					userinfo!(message)
+					} 
+					else
+					{
+						print!("password fault") 
+						|
+						userinfo!(message)
+						|
+						ret!("passwordfault")
+					}//返回用户名
+                }
+				else
+				{
+                    print!("id not cunzai")
+					|
+					userinfo!(message)
+					|
+					ret!("id not cunzai")
+                }
+            }
+        }
+        
+	}
+}
