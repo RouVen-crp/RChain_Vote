@@ -24,6 +24,7 @@
                               prepend-icon="email"
                               type="text"
                               color="teal accent-3"
+                              v-model="LoginUserName"
                             />
   
                             <v-text-field
@@ -33,12 +34,13 @@
                               prepend-icon="lock"
                               type="password"
                               color="teal accent-3"
+                              v-model="LoginPassword"
                             />
                           </v-form>
                           <!-- <h3 class="text-center mt-4">Forgot your password ?</h3> -->
                         </v-card-text>
                         <div class="text-center">
-                          <v-btn rounded size="large" color="teal accent-3" @click="Logged()">SIGN IN</v-btn>
+                          <v-btn rounded size="large" color="teal accent-3" @click="login">SIGN IN</v-btn>
                           <div class="text-center mt-12">
 
                           </div>
@@ -77,6 +79,7 @@
                               name="Userame"
                               type="text"
                               color="teal accent-3"
+                              v-model="UserName"
                             />
                             <v-text-field
                               label="PublicKey"
@@ -90,11 +93,12 @@
                               label="Password"
                               name="password"
                               color="teal accent-3"
+                              v-model="PassWord"
                             />
                           </v-form>
                         </v-card-text>
                         <div class="text-center">
-                          <v-btn rounded color="teal accent-3" dark size="large">SIGN UP</v-btn>
+                          <v-btn @click="register" rounded color="teal accent-3" dark size="large">SIGN UP</v-btn>
                           <div class="text-center mt-10">
 
                           </div>
@@ -127,6 +131,8 @@
 </style>
 
   <script>
+  import {get} from "@/router/axiosuse";
+  import {post} from "@/router/axiosuse";
   export default {
     data: () => ({
       imageUrl: 'img\h1.jpg',
@@ -135,7 +141,47 @@
     methods: {
         Logged() {
             this.$router.push({ path: '/MainPage' })
+        },
+        login(){
+          console.log("login")
+          post(
+            '/login',
+            {
+              ID:this.LoginUserName,
+              password:this.LoginPassword,
+
+            },
+          ).then(res =>{
+            console.log(res.data);
+            alert(res.data);
+            if(res.data!="passwordfault"&&res.data!="id not cunzai"){
+              
+              this.$router.push({ path: '/MainPage' })
+            }
+            else{
+              alert(res.data);
+            }
+          })
+        },
+        register(){
+          console.log("register")
+          post(
+            '/Register',
+            {
+              ID:this.UserName,
+              password:this.PassWord,
+
+            },
+          ).then(res =>{
+            console.log(res.data);
+           
+            alert(res.data);
+           
+            console.log(typeof res.data);
+            
+          })
         }
+      
     },
     props: {
       source: String
