@@ -1,10 +1,10 @@
 <template>
     <v-app >
-      <v-content class="fill-height" align-self="center" :style="{ backgroundImage: 'url(' + imageUrl + ')' }">
-        <v-container fluid align-self="center" class="transparent-container">
-          <v-row justify="center" class="transparent-container">
-            <v-col cols="14"  md="8" align-self="center" class="transparent-container">
-              <v-card class="elevation-6 transparent-container">
+      
+        <v-container fluid align="center" class="fill-height" :style="{ backgroundImage: 'url(' + imageUrl + ')' }" >
+          <v-row no-gutters align="center">
+            <v-col  align-self="center">
+              <v-card max-width="1011px" max-height="673" class="elevation-6 transparent-container" align-self="center">
                 <v-window v-model="step" class="transparent-container">
                   <v-window-item :value="1" class="transparent-container">
                     <v-row>
@@ -107,13 +107,12 @@
             </v-col>
           </v-row>
         </v-container>
-      </v-content>
     </v-app>
   </template>
   
   <style>
   body {
-    background-image: url('img\h1.jpg');
+    background-image: url('/imgs/h1.jpg');
     background-size: cover; /* 或者 'contain'，根据需要选择 */
     background-position: center center;
     background-repeat: no-repeat;
@@ -122,14 +121,14 @@
 
 <style scoped>
 .transparent-container {
-  background: rgba(255, 255, 255, 0); /* 调整最后一个值 (0.5) 以改变透明度，范围是 0（完全透明）到 1（完全不透明） */
+  background: rgba(255, 255, 255, 0.3); /* 调整最后一个值 (0.5) 以改变透明度，范围是 0（完全透明）到 1（完全不透明） */
 }
 </style>
 
   <script>
   export default {
     data: () => ({
-      imageUrl: 'img\h1.jpg',
+      imageUrl: '/imgs/h3.jpg',
       step: 1
     }),
     methods: {
