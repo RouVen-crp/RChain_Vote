@@ -1,0 +1,1091 @@
+2023-11-15 16:42:01,474 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Port 40400 is already in use!
+2023-11-15 16:42:01,475 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Hint: Run me with --use-random-ports to use a random port for RChain Protocol port
+2023-11-15 16:42:01,486 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Unhandled exception in thread main
+java.lang.Exception: Invalid RChain Protocol port
+	at coop.rchain.node.Main$.$anonfun$checkPorts$15(Main.scala:364)
+	at cats.syntax.FlatMapOps$.$anonfun$$greater$greater$1(flatMap.scala:33)
+	at >>$extension @ coop.rchain.node.Main$.$anonfun$checkPorts$10(Main.scala:364)
+	at as @ coop.rchain.node.Main$.$anonfun$checkPorts$7(Main.scala:348)
+	at map @ coop.rchain.node.Main$.isLocalPortAvailable$1(Main.scala:345)
+	at ifM$extension @ coop.rchain.node.Main$.$anonfun$checkHost$2(Main.scala:314)
+	at ifM$extension @ coop.rchain.node.Main$.$anonfun$checkHost$2(Main.scala:314)
+	at flatMap @ coop.rchain.node.Main$.$anonfun$checkPorts$29(Main.scala:405)
+	at flatMap @ coop.rchain.node.Main$.$anonfun$checkPorts$28(Main.scala:396)
+	at map @ coop.rchain.node.Main$.isLocalPortAvailable$1(Main.scala:345)
+	at ifM$extension @ coop.rchain.node.Main$.$anonfun$checkHost$2(Main.scala:314)
+	at traverse @ coop.rchain.node.Main$.$anonfun$checkPorts$23(Main.scala:392)
+	at traverse @ coop.rchain.node.Main$.checkPorts(Main.scala:392)
+	at runToFuture @ coop.rchain.catscontrib.TaskContrib$TaskOps$.unsafeRunSync$extension(taskOps.scala:27)
+	at map @ coop.rchain.node.Main$.isLocalPortAvailable$1(Main.scala:345)
+	at ifM$extension @ coop.rchain.node.Main$.$anonfun$checkHost$2(Main.scala:314)
+	at traverse @ coop.rchain.node.Main$.$anonfun$checkPorts$23(Main.scala:392)
+	at traverse @ coop.rchain.node.Main$.checkPorts(Main.scala:392)
+2023-11-15 16:42:28,238 [INFO ] [main                ] [coop.rchain.node.Main$       ]- RChain Node 0.13.0-alpha3 (c766347c6df06d813f802ae9e4ca1186647cf070)
+2023-11-15 16:42:28,240 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Starting with profile default
+2023-11-15 16:42:28,240 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Using configuration file: /home/li/桌面/Hello-RChain(yuan)/config.conf
+2023-11-15 16:42:28,241 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Running on network: testnet
+2023-11-15 16:42:28,395 [INFO ] [main                ] [c.r.node.NodeEnvironment$    ]- Using data dir: /home/li/桌面/Hello-RChain(yuan)/rnode0
+2023-11-15 16:42:28,400 [INFO ] [main                ] [t.GenerateCertificateIfAbsent]- No certificate found at path rnode0/node.certificate.pem
+2023-11-15 16:42:28,400 [INFO ] [main                ] [t.GenerateCertificateIfAbsent]- Generating a X.509 certificate for the node
+2023-11-15 16:42:28,401 [INFO ] [main                ] [t.GenerateCertificateIfAbsent]- Generating a PEM secret key for the node
+2023-11-15 16:42:28,675 [DEBUG] [main                ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withECDSA, Serial:934bf01273f0fb07, Subject:CN=3d3dd0777281b1baa55dc6bcee16126ecce03a2e, Issuer:CN=3d3dd0777281b1baa55dc6bcee16126ecce03a2e, Key type:EC, Length:256, Cert Id:410672856, Valid from:2023/11/16 上午1:42, Valid until:2024/11/15 上午1:42
+2023-11-15 16:42:29,160 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/dagstorage
+2023-11-15 16:42:29,431 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: last-finalized-block, env: rnode0/dagstorage
+2023-11-15 16:42:29,448 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Building in-memory blockMetadataStore.
+2023-11-15 16:42:29,449 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: block-metadata, env: rnode0/dagstorage
+2023-11-15 16:42:29,455 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Reading data from blockMetadataStore done.
+2023-11-15 16:42:29,475 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Successfully built in-memory blockMetadataStore.
+2023-11-15 16:42:29,501 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/casperbuffer
+2023-11-15 16:42:29,502 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: parents-map, env: rnode0/casperbuffer
+2023-11-15 16:42:29,839 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/eval/history
+2023-11-15 16:42:29,840 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-roots, env: rnode0/eval/history
+2023-11-15 16:42:29,888 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-history, env: rnode0/eval/history
+2023-11-15 16:42:31,638 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/history
+2023-11-15 16:42:31,639 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-roots, env: rnode0/rspace/history
+2023-11-15 16:42:31,643 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-history, env: rnode0/rspace/history
+2023-11-15 16:42:32,115 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks-approved, env: rnode0/dagstorage
+2023-11-15 16:42:32,120 [INFO ] [node-runner-18      ] [c.r.c.e.CasperLaunch$$anon$1 ]- Approved block not found, taking part in ceremony as ceremony master
+2023-11-15 16:42:32,139 [INFO ] [node-runner-18      ] [c.r.casper.util.VaultParser$ ]- Parsing wallets file rnode0/genesis/wallets.txt.
+2023-11-15 16:42:32,412 [INFO ] [node-runner-18      ] [c.r.casper.util.VaultParser$ ]- Wallet loaded: 11112gNSU4Ytt3b2TpAQnggARSidPpNxrNkWqFFg52aNe5t6sjCy2c,1000000000000000
+2023-11-15 16:42:32,434 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Parsing bonds file rnode0/genesis/bonds.txt.
+2023-11-15 16:42:32,442 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 047d92364b25cc28ee397b9ad147a931e88b044f934e31f6fe8ae5cddc2ebb616df7f0f388363929d261a04400f608f3d078f064b039a634b736d999da7a386f92 => 3
+2023-11-15 16:42:32,445 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 0448b1942cb06835149ecbe76e32f2f59b40042daf5f7754e28612de4443b436dcd154c2c4d0dca87ba8050330169550f9ac65343094168aaa6947fe65ac93d671 => 1
+2023-11-15 16:42:32,447 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 04570e5edfdcc574318a72d46efe688f96d5f0b942fb94b60a51a332d144dc459b0231239501b91e38d655b68c51e9e0fd49b62e961d2d69c5404bed7c804620d3 => 5
+2023-11-15 16:42:32,448 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 0431cdf19efba3eb6cbf459905dff5a7437376e0b0099e799a948fe3ceaf4335c37ddf36ec9289c4ed72e6d4e9c0dc8b8ba79fbfab93c57c385afe7dcd3d811d60 => 2
+2023-11-15 16:42:32,449 [INFO ] [node-runner-18      ] [c.r.casper.util.BondsParser$ ]- Bond loaded 04d01c03c0022e43390639fe67d625504b4402e08b9016276dd0792edb25c64c56e9a07c402f830415cce99d8afe88e197612cf0fcb69016ce3f6a483dc91923ae => 4
+2023-11-15 16:42:33,762 [DEBUG] [node-runner-23      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/cold
+2023-11-15 16:42:33,764 [DEBUG] [node-runner-23      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-cold, env: rnode0/rspace/cold
+2023-11-15 16:42:41,254 [DEBUG] [node-runner-23      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: mergeable-channel-cache, env: rnode0/dagstorage
+2023-11-15 16:42:41,581 [INFO ] [node-runner-23      ] [c.r.node.runtime.NodeRuntime ]- Starting stand-alone node.
+2023-11-15 16:42:43,314 [INFO ] [node-runner-23      ] [c.r.n.r.ServersInstances$    ]- HTTP API server started at localhost:40403
+2023-11-15 16:42:43,326 [INFO ] [node-runner-23      ] [c.r.n.r.ServersInstances$    ]- Admin HTTP API server started at localhost:40405
+2023-11-15 16:42:43,364 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Starting execution of ApprovedBlockProtocol. Waiting for 0 approvals from genesis validators.
+2023-11-15 16:42:43,374 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Self-approving genesis block.
+2023-11-15 16:42:43,375 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:42:43,426 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Sending ApprovedBlock 0fd8d49754... to peers...
+2023-11-15 16:42:43,432 [INFO ] [node-runner-23      ] [ocol$ApproveBlockProtocolImpl]- Finished execution of ApprovedBlockProtocol
+2023-11-15 16:42:43,539 [INFO ] [node-runner-26      ] [c.r.n.r.ServersInstances$    ]- External API server started at localhost:40401
+2023-11-15 16:42:43,539 [INFO ] [node-runner-27      ] [c.r.n.r.ServersInstances$    ]- Kademlia RPC server started at 192.168.254.128:40404
+2023-11-15 16:42:43,539 [INFO ] [node-runner-24      ] [c.r.n.r.ServersInstances$    ]- Internal API server started at 192.168.254.128:40402
+2023-11-15 16:42:43,587 [DEBUG] [node-runner-29      ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withRSA, Serial:752bd03efd500194, Subject:CN=example.com, Issuer:CN=example.com, Key type:RSA, Length:2048, Cert Id:1467855822, Valid from:2018/4/7 上午7:06, Valid until:10000/1/1 上午8:59
+2023-11-15 16:42:43,602 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/blockstorage
+2023-11-15 16:42:43,603 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks, env: rnode0/blockstorage
+2023-11-15 16:42:43,618 [WARN ] [node-runner-18      ] [.b.d.BlockDagKeyValueStorage$]- Block Block #0 (0fd8d49754...) with empty parents (supposedly genesis) sender is empty.
+2023-11-15 16:42:43,627 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy-index, env: rnode0/dagstorage
+2023-11-15 16:42:43,643 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: latest-messages, env: rnode0/dagstorage
+2023-11-15 16:42:43,655 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: invalid-blocks, env: rnode0/dagstorage
+2023-11-15 16:42:43,679 [INFO ] [node-runner-18      ] [c.r.casper.engine.Engine$    ]- Making a transition to Running state. Approved Block #0 (0fd8d49754...) with empty parents (supposedly genesis)
+2023-11-15 16:42:43,715 [INFO ] [node-runner-18      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 16:42:43,785 [INFO ] [node-runner-29      ] [c.r.n.r.ServersInstances$    ]- Listening for traffic on rnode://3d3dd0777281b1baa55dc6bcee16126ecce03a2e@192.168.254.128?protocol=40400&discovery=40404.
+2023-11-15 16:43:13,380 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:43:13,380 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:43:19,427 [DEBUG] [node-runner-27      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 0fd8d4975418bd485d5b90e838c898bb60f7ea738b8687b0723f1d312d942d19.
+2023-11-15 16:43:19,469 [DEBUG] [node-runner-27      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: equivocation-tracker, env: rnode0/dagstorage
+2023-11-15 16:43:19,845 [DEBUG] [node-runner-29      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/deploystorage
+2023-11-15 16:43:19,845 [DEBUG] [node-runner-29      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy_storage, env: rnode0/deploystorage
+2023-11-15 16:43:19,850 [INFO ] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700066598921 -- /*new message in {
+	
+	contract @{"global_factory"}(getInfo, setInfo) = {
+		contract getInfo(ret) = {
+			for (msg <- message){
+				ret!(*msg)
+				|
+				message!(*msg)
+			}
+		}
+		|
+		contract setInfo(newMessage) = {
+			for (msg <- message) {
+				message!(*newMessage)
+			}
+		}
+	}
+	|
+	message!("Hello")
+}*/
+
+new userinfo,print(`rho:io:stdout`),ret in {
+userinfo!({"1":"1"})|
+	contract @{"usr_factory"}(register, login) = {
+		
+	
+		contract register(id,password,ret) = {
+			for(@message <- userinfo){
+				if(message.contains(*id)){
+					ret!("false")
+					|
+					userinfo!(message)
+					}
+				else
+				{
+			 userinfo!(message.union({*id:*password}))
+			 |
+			 print!(message.union({*id:*password}))
+			 |
+			 ret!("success")
+			    }
+			}
+			//userinfo.union({*publickey, "testusrName"})
+
+		}
+		|
+		contract login(id,password,ret) = {
+            //for (@message <- userinfo){
+               // print!(message)
+				//|
+				//userinfo!(message)
+           // }
+            //|
+		
+			
+            for(@message <- userinfo) {
+				print!(message)
+				|
+				
+				
+                if(message.contains(*id)) 
+				{
+                   if(message.get(*id)== *password)
+				    {
+					print!("Login Success") 
+					|
+                    ret!(message.get(*id))
+					|
+					userinfo!(message)
+					} 
+					else
+					{
+						print!("password fault") 
+						|
+						userinfo!(message)
+						|
+						ret!("passwordfault")
+					}//返回用户名
+                }
+				else
+				{
+                    print!("id not cunzai")
+					|
+					userinfo!(message)
+					|
+					ret!("id not cunzai")
+                }
+            }
+        }
+        
+	}
+}
+, Sig: 3045022100d8a542ffb7...b7328d1f8084e2a5d30a, SigAlgorithm: secp256k1, ValidAfterBlockNumber: -1
+2023-11-15 16:43:20,149 [DEBUG] [c-nio-worker-ELG-3-1] [io.perfmark.PerfMark         ]- Error during PerfMark.<clinit>
+java.lang.ClassNotFoundException: io.perfmark.impl.SecretPerfMarkImpl$PerfMarkImpl
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:315)
+	at io.perfmark.PerfMark.<clinit>(PerfMark.java:36)
+	at io.grpc.netty.NettyServerStream$TransportState.<init>(NettyServerStream.java:225)
+	at io.grpc.netty.NettyServerHandler.onHeadersRead(NettyServerHandler.java:439)
+	at io.grpc.netty.NettyServerHandler.access$900(NettyServerHandler.java:101)
+	at io.grpc.netty.NettyServerHandler$FrameListener.onHeadersRead(NettyServerHandler.java:813)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:373)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:321)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$PrefaceFrameListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:665)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger$1.onHeadersRead(Http2InboundFrameLogger.java:56)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader$2.processFragment(DefaultHttp2FrameReader.java:483)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readHeadersFrame(DefaultHttp2FrameReader.java:491)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.processPayloadState(DefaultHttp2FrameReader.java:254)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readFrame(DefaultHttp2FrameReader.java:160)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger.readFrame(Http2InboundFrameLogger.java:41)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder.decodeFrame(DefaultHttp2ConnectionDecoder.java:174)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$FrameDecoder.decode(Http2ConnectionHandler.java:378)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.decode(Http2ConnectionHandler.java:242)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler.decode(Http2ConnectionHandler.java:438)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:498)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:437)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:276)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2023-11-15 16:43:20,204 [INFO ] [node-runner-26      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 16:43:20,895 [INFO ] [node-runner-23      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [680.337354 ms]
+2023-11-15 16:43:20,903 [INFO ] [node-runner-37      ] [alizedHeightConstraintChecker]- Latest message is 0 blocks ahead of the last finalized block
+2023-11-15 16:43:20,911 [INFO ] [node-runner-26      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #1 (seqNum 1)
+2023-11-15 16:43:20,982 [INFO ] [node-runner-29      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 16:43:21,588 [INFO ] [node-runner-26      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 95264
+2023-11-15 16:43:22,554 [INFO ] [node-runner-18      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #1 (e0b055e465...) (1d) [1.643223034 sec]
+2023-11-15 16:43:22,562 [INFO ] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #1 (e0b055e465...).
+2023-11-15 16:43:22,617 [INFO ] [node-runner-18      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #1 (e0b055e465...) -- Sender ID 047d92364b... -- M Parent Hash 0fd8d49754... -- Contents 8194fc58d3...-- Shard ID root.
+2023-11-15 16:43:24,069 [INFO ] [node-runner-18      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 16:43:24,073 [INFO ] [node-runner-18      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 16:43:24,075 [INFO ] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #1 (e0b055e465...) (1d) (Valid) [1.512308252 sec]
+2023-11-15 16:43:24,370 [INFO ] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Block e0b055e465... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 16:43:24,374 [INFO ] [node-runner-24      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash e0b055e465... to peers
+2023-11-15 16:43:24,400 [INFO ] [node-runner-29      ] [c.rchain.casper.api.BlockAPI$]- Success! Block e0b055e465bab9bf9499c748d8d1485723f436ade7989f627d4254dc8db4e07a created and added.
+2023-11-15 16:43:24,401 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #1 (e0b055e465...) created and added.
+2023-11-15 16:43:43,382 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:43:43,382 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:44:13,387 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:44:13,388 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:44:43,389 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:44:43,389 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:45:13,390 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:45:13,390 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:45:43,392 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:45:43,392 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:46:13,393 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:46:13,394 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:46:43,395 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:46:43,395 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:47:13,397 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:47:13,397 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:47:43,398 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:47:43,399 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 16:48:13,402 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:48:13,402 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:48:43,404 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:48:43,404 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:49:13,406 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:49:13,406 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:49:43,407 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:49:43,407 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:50:13,408 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:50:13,409 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:50:43,410 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:50:43,410 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:51:13,411 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:51:13,411 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:51:43,413 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:51:43,413 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:52:13,414 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:52:13,415 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:52:43,416 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:52:43,416 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:53:13,418 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:53:13,418 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:53:43,419 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:53:43,420 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:53:48,551 [INFO ] [node-runner-37      ] [c.r.casper.engine.Running$   ]- Requesting tips update as newest latest message is more then 10 minutes old. Might be network is faulty.
+2023-11-15 16:53:48,551 [INFO ] [node-runner-37      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 16:54:13,421 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:54:13,522 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:54:43,524 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:54:43,524 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:55:13,525 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:55:13,525 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:55:43,526 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:55:43,527 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:56:13,537 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:56:13,538 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:56:43,539 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:56:43,539 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:57:13,540 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:57:13,540 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:57:43,541 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:57:43,585 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:58:04,035 [DEBUG] [node-runner-26      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for e0b055e465bab9bf9499c748d8d1485723f436ade7989f627d4254dc8db4e07a.
+2023-11-15 16:58:13,587 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:58:13,587 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:58:43,588 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:58:43,589 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:59:13,594 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:59:13,594 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 16:59:43,595 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 16:59:43,596 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:00:13,596 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:00:13,597 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:00:43,598 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:00:43,598 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:01:13,599 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:01:13,600 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:01:43,601 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:01:43,602 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:02:13,603 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:02:13,603 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:02:43,605 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:02:43,605 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:03:13,606 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:03:13,607 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:03:19,025 [DEBUG] [node-runner-37      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for e0b055e465bab9bf9499c748d8d1485723f436ade7989f627d4254dc8db4e07a.
+2023-11-15 17:03:43,608 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:03:43,608 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:04:13,609 [DEBUG] [node-runner-26      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:04:13,609 [DEBUG] [node-runner-26      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:04:43,610 [DEBUG] [node-runner-27      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:04:43,611 [DEBUG] [node-runner-27      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:04:48,560 [INFO ] [node-runner-27      ] [c.r.casper.engine.Running$   ]- Requesting tips update as newest latest message is more then 10 minutes old. Might be network is faulty.
+2023-11-15 17:04:48,561 [INFO ] [node-runner-27      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 17:05:13,612 [DEBUG] [node-runner-37      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:05:13,613 [DEBUG] [node-runner-37      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:05:43,614 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:05:43,614 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:05:51,522 [DEBUG] [node-runner-18      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for e0b055e465bab9bf9499c748d8d1485723f436ade7989f627d4254dc8db4e07a.
+2023-11-15 17:06:13,615 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:06:13,615 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:06:43,617 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:06:43,617 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:07:13,618 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:07:13,618 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:07:30,407 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Port 40403 is already in use!
+2023-11-15 17:07:30,412 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Port 40405 is already in use!
+2023-11-15 17:07:30,414 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Port 40401 is already in use!
+2023-11-15 17:07:30,416 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Port 40402 is already in use!
+2023-11-15 17:07:30,426 [ERROR] [main                ] [coop.rchain.node.Main$       ]- Unhandled exception in thread main
+java.lang.Exception: Required ports are already in use: http, admin http, grpc server external, grpc server internal
+	at coop.rchain.node.Main$.$anonfun$checkPorts$28(Main.scala:401)
+	at flatMap @ coop.rchain.node.Main$.$anonfun$checkPorts$28(Main.scala:396)
+	at as @ coop.rchain.node.Main$.$anonfun$checkPorts$7(Main.scala:348)
+	at map @ coop.rchain.node.Main$.isLocalPortAvailable$1(Main.scala:345)
+	at ifM$extension @ coop.rchain.node.Main$.$anonfun$checkHost$2(Main.scala:314)
+	at traverse @ coop.rchain.node.Main$.$anonfun$checkPorts$23(Main.scala:392)
+	at traverse @ coop.rchain.node.Main$.checkPorts(Main.scala:392)
+	at runToFuture @ coop.rchain.catscontrib.TaskContrib$TaskOps$.unsafeRunSync$extension(taskOps.scala:27)
+	at as @ coop.rchain.node.Main$.$anonfun$checkPorts$7(Main.scala:348)
+	at map @ coop.rchain.node.Main$.isLocalPortAvailable$1(Main.scala:345)
+	at ifM$extension @ coop.rchain.node.Main$.$anonfun$checkHost$2(Main.scala:314)
+	at traverse @ coop.rchain.node.Main$.$anonfun$checkPorts$23(Main.scala:392)
+	at traverse @ coop.rchain.node.Main$.checkPorts(Main.scala:392)
+	at runToFuture @ coop.rchain.catscontrib.TaskContrib$TaskOps$.unsafeRunSync$extension(taskOps.scala:27)
+	at as @ coop.rchain.node.Main$.$anonfun$checkPorts$7(Main.scala:348)
+	at map @ coop.rchain.node.Main$.isLocalPortAvailable$1(Main.scala:345)
+	at ifM$extension @ coop.rchain.node.Main$.$anonfun$checkHost$2(Main.scala:314)
+2023-11-15 17:07:43,619 [DEBUG] [node-runner-29      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:07:43,620 [DEBUG] [node-runner-29      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:08:14,675 [INFO ] [main                ] [coop.rchain.node.Main$       ]- RChain Node 0.13.0-alpha3 (c766347c6df06d813f802ae9e4ca1186647cf070)
+2023-11-15 17:08:14,678 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Starting with profile default
+2023-11-15 17:08:14,678 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Using configuration file: /home/li/桌面/Hello-RChain(yuan)/config.conf
+2023-11-15 17:08:14,678 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Running on network: testnet
+2023-11-15 17:08:14,844 [INFO ] [main                ] [c.r.node.NodeEnvironment$    ]- Using data dir: /home/li/桌面/Hello-RChain(yuan)/rnode0
+2023-11-15 17:08:15,426 [DEBUG] [main                ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withECDSA, Serial:934bf01273f0fb07, Subject:CN=3d3dd0777281b1baa55dc6bcee16126ecce03a2e, Issuer:CN=3d3dd0777281b1baa55dc6bcee16126ecce03a2e, Key type:EC, Length:256, Cert Id:410672856, Valid from:2023/11/16 上午1:42, Valid until:2024/11/15 上午1:42
+2023-11-15 17:08:15,898 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/dagstorage
+2023-11-15 17:08:16,167 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: last-finalized-block, env: rnode0/dagstorage
+2023-11-15 17:08:16,200 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Building in-memory blockMetadataStore.
+2023-11-15 17:08:16,202 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: block-metadata, env: rnode0/dagstorage
+2023-11-15 17:08:16,372 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Reading data from blockMetadataStore done.
+2023-11-15 17:08:16,391 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Successfully built in-memory blockMetadataStore.
+2023-11-15 17:08:16,399 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/casperbuffer
+2023-11-15 17:08:16,401 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: parents-map, env: rnode0/casperbuffer
+2023-11-15 17:08:16,621 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/eval/history
+2023-11-15 17:08:16,638 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-roots, env: rnode0/eval/history
+2023-11-15 17:08:16,676 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-history, env: rnode0/eval/history
+2023-11-15 17:08:18,156 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/history
+2023-11-15 17:08:18,173 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-roots, env: rnode0/rspace/history
+2023-11-15 17:08:18,205 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-history, env: rnode0/rspace/history
+2023-11-15 17:08:18,597 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks-approved, env: rnode0/dagstorage
+2023-11-15 17:08:18,768 [INFO ] [main                ] [c.r.c.e.CasperLaunch$$anon$1 ]- Approved block found, reconnecting to existing network
+2023-11-15 17:08:18,799 [INFO ] [main                ] [c.r.casper.engine.Engine$    ]- Making a transition to Running state. Approved Block #0 (0fd8d49754...) with empty parents (supposedly genesis)
+2023-11-15 17:08:18,809 [INFO ] [main                ] [c.r.node.runtime.NodeRuntime ]- Starting stand-alone node.
+2023-11-15 17:08:20,086 [INFO ] [main                ] [c.r.n.r.ServersInstances$    ]- HTTP API server started at localhost:40403
+2023-11-15 17:08:20,096 [INFO ] [main                ] [c.r.n.r.ServersInstances$    ]- Admin HTTP API server started at localhost:40405
+2023-11-15 17:08:20,246 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:08:20,252 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:08:20,354 [INFO ] [node-runner-21      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 17:08:20,357 [INFO ] [node-runner-21      ] [c.r.c.e.CasperLaunch$$anon$1 ]- Checking pendant hashes: 0 items in CasperBuffer.
+2023-11-15 17:08:20,384 [INFO ] [node-runner-25      ] [c.r.n.r.ServersInstances$    ]- Internal API server started at 192.168.254.128:40402
+2023-11-15 17:08:20,384 [INFO ] [node-runner-23      ] [c.r.n.r.ServersInstances$    ]- Kademlia RPC server started at 192.168.254.128:40404
+2023-11-15 17:08:20,385 [INFO ] [node-runner-22      ] [c.r.n.r.ServersInstances$    ]- External API server started at localhost:40401
+2023-11-15 17:08:20,401 [DEBUG] [node-runner-24      ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withRSA, Serial:752bd03efd500194, Subject:CN=example.com, Issuer:CN=example.com, Key type:RSA, Length:2048, Cert Id:1467855822, Valid from:2018/4/7 上午7:06, Valid until:10000/1/1 上午8:59
+2023-11-15 17:08:20,594 [INFO ] [node-runner-24      ] [c.r.n.r.ServersInstances$    ]- Listening for traffic on rnode://3d3dd0777281b1baa55dc6bcee16126ecce03a2e@192.168.254.128?protocol=40400&discovery=40404.
+2023-11-15 17:08:41,060 [DEBUG] [node-runner-20      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: latest-messages, env: rnode0/dagstorage
+2023-11-15 17:08:41,063 [DEBUG] [node-runner-20      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: invalid-blocks, env: rnode0/dagstorage
+2023-11-15 17:08:41,094 [DEBUG] [node-runner-20      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/blockstorage
+2023-11-15 17:08:41,094 [DEBUG] [node-runner-20      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks, env: rnode0/blockstorage
+2023-11-15 17:08:41,122 [DEBUG] [node-runner-20      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for e0b055e465bab9bf9499c748d8d1485723f436ade7989f627d4254dc8db4e07a.
+2023-11-15 17:08:41,162 [DEBUG] [node-runner-20      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: equivocation-tracker, env: rnode0/dagstorage
+2023-11-15 17:08:41,728 [DEBUG] [node-runner-21      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/deploystorage
+2023-11-15 17:08:41,729 [DEBUG] [node-runner-21      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy_storage, env: rnode0/deploystorage
+2023-11-15 17:08:41,732 [INFO ] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700068120668 -- /*new message in {
+	
+	contract @{"global_factory"}(getInfo, setInfo) = {
+		contract getInfo(ret) = {
+			for (msg <- message){
+				ret!(*msg)
+				|
+				message!(*msg)
+			}
+		}
+		|
+		contract setInfo(newMessage) = {
+			for (msg <- message) {
+				message!(*newMessage)
+			}
+		}
+	}
+	|
+	message!("Hello")
+}*/
+
+new userinfo,print(`rho:io:stdout`),ret in {
+userinfo!({"1":"1"})|
+	contract @{"usr_factory"}(register, login) = {
+		
+	
+		contract register(id,password,ret) = {
+			for(@message <- userinfo){
+				if(message.contains(*id)){
+					ret!("false")
+					|
+					userinfo!(message)
+					}
+				else
+				{
+			 userinfo!(message.union({*id:*password}))
+			 |
+			 print!(message.union({*id:*password}))
+			 |
+			 ret!("success")
+			    }
+			}
+			//userinfo.union({*publickey, "testusrName"})
+
+		}
+		|
+		contract login(id,password,ret) = {
+            //for (@message <- userinfo){
+               // print!(message)
+				//|
+				//userinfo!(message)
+           // }
+            //|
+		
+			
+            for(@message <- userinfo) {
+				print!(message)
+				|
+				
+				
+                if(message.contains(*id)) 
+				{
+                   if(message.get(*id)== *password)
+				    {
+					print!("Login Success") 
+					|
+                    ret!(message.get(*id))
+					|
+					userinfo!(message)
+					} 
+					else
+					{
+						print!("password fault") 
+						|
+						userinfo!(message)
+						|
+						ret!("passwordfault")
+					}//返回用户名
+                }
+				else
+				{
+                    print!("id not cunzai")
+					|
+					userinfo!(message)
+					|
+					ret!("id not cunzai")
+                }
+            }
+        }
+        
+	}
+}
+, Sig: 3044022022b64a28e197...3ff955412c858b8e403f, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 1
+2023-11-15 17:08:41,923 [DEBUG] [c-nio-worker-ELG-3-1] [io.perfmark.PerfMark         ]- Error during PerfMark.<clinit>
+java.lang.ClassNotFoundException: io.perfmark.impl.SecretPerfMarkImpl$PerfMarkImpl
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:315)
+	at io.perfmark.PerfMark.<clinit>(PerfMark.java:36)
+	at io.grpc.netty.NettyServerStream$TransportState.<init>(NettyServerStream.java:225)
+	at io.grpc.netty.NettyServerHandler.onHeadersRead(NettyServerHandler.java:439)
+	at io.grpc.netty.NettyServerHandler.access$900(NettyServerHandler.java:101)
+	at io.grpc.netty.NettyServerHandler$FrameListener.onHeadersRead(NettyServerHandler.java:813)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:373)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:321)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$PrefaceFrameListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:665)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger$1.onHeadersRead(Http2InboundFrameLogger.java:56)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader$2.processFragment(DefaultHttp2FrameReader.java:483)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readHeadersFrame(DefaultHttp2FrameReader.java:491)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.processPayloadState(DefaultHttp2FrameReader.java:254)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readFrame(DefaultHttp2FrameReader.java:160)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger.readFrame(Http2InboundFrameLogger.java:41)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder.decodeFrame(DefaultHttp2ConnectionDecoder.java:174)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$FrameDecoder.decode(Http2ConnectionHandler.java:378)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.decode(Http2ConnectionHandler.java:242)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler.decode(Http2ConnectionHandler.java:438)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:498)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:437)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:276)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2023-11-15 17:08:41,958 [INFO ] [node-runner-18      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:08:42,146 [DEBUG] [node-runner-20      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/cold
+2023-11-15 17:08:42,162 [DEBUG] [node-runner-20      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-cold, env: rnode0/rspace/cold
+2023-11-15 17:08:43,715 [INFO ] [node-runner-21      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [1.753087773 sec]
+2023-11-15 17:08:43,724 [INFO ] [node-runner-18      ] [alizedHeightConstraintChecker]- Latest message is 1 blocks ahead of the last finalized block
+2023-11-15 17:08:44,172 [INFO ] [node-runner-19      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:08:44,183 [INFO ] [node-runner-20      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #2 (seqNum 2)
+2023-11-15 17:08:44,313 [INFO ] [node-runner-24      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:08:45,354 [INFO ] [node-runner-23      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 95264
+2023-11-15 17:08:46,388 [DEBUG] [node-runner-23      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: mergeable-channel-cache, env: rnode0/dagstorage
+2023-11-15 17:08:46,694 [INFO ] [node-runner-21      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #2 (224cc28475...) (1d) [2.510539322 sec]
+2023-11-15 17:08:46,704 [INFO ] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #2 (224cc28475...).
+2023-11-15 17:08:46,756 [INFO ] [node-runner-21      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #2 (224cc28475...) -- Sender ID 047d92364b... -- M Parent Hash e0b055e465... -- Contents af3fc6d818...-- Shard ID root.
+2023-11-15 17:08:48,460 [INFO ] [node-runner-23      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:08:48,464 [INFO ] [node-runner-23      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:08:48,466 [INFO ] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #2 (224cc28475...) (1d) (Valid) [1.760376087 sec]
+2023-11-15 17:08:48,875 [DEBUG] [node-runner-25      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy-index, env: rnode0/dagstorage
+2023-11-15 17:08:48,923 [INFO ] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Block 224cc28475... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:08:48,926 [INFO ] [node-runner-25      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 224cc28475... to peers
+2023-11-15 17:08:48,934 [INFO ] [node-runner-19      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 224cc28475123a2604cea8bd0730f33295a8a61c5ea192996ec17778cab68081 created and added.
+2023-11-15 17:08:48,936 [INFO ] [node-runner-25      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #2 (224cc28475...) created and added.
+2023-11-15 17:08:50,257 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:08:50,257 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:09:05,179 [DEBUG] [node-runner-18      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 224cc28475123a2604cea8bd0730f33295a8a61c5ea192996ec17778cab68081.
+2023-11-15 17:09:20,262 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:09:20,262 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:09:50,264 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:09:50,264 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:10:20,265 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:10:20,265 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:10:50,266 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:10:50,266 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:11:20,267 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:11:20,267 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:11:50,270 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:11:50,270 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:12:20,272 [DEBUG] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:12:20,272 [DEBUG] [node-runner-22      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:12:50,274 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:12:50,274 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:13:20,275 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:13:20,276 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:13:50,277 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:13:50,277 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:14:20,278 [DEBUG] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:14:20,279 [DEBUG] [node-runner-22      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:14:50,280 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:14:50,280 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:15:20,281 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:15:20,281 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:15:50,283 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:15:50,284 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:16:20,284 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:16:20,285 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:16:50,286 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:16:50,286 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:19:38,442 [INFO ] [main                ] [coop.rchain.node.Main$       ]- RChain Node 0.13.0-alpha3 (c766347c6df06d813f802ae9e4ca1186647cf070)
+2023-11-15 17:19:38,444 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Starting with profile default
+2023-11-15 17:19:38,445 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Using configuration file: /home/li/桌面/Hello-RChain(yuan)/config.conf
+2023-11-15 17:19:38,445 [INFO ] [main                ] [coop.rchain.node.Main$       ]- Running on network: testnet
+2023-11-15 17:19:38,581 [INFO ] [main                ] [c.r.node.NodeEnvironment$    ]- Using data dir: /home/li/桌面/Hello-RChain(yuan)/rnode0
+2023-11-15 17:19:38,727 [DEBUG] [main                ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withECDSA, Serial:934bf01273f0fb07, Subject:CN=3d3dd0777281b1baa55dc6bcee16126ecce03a2e, Issuer:CN=3d3dd0777281b1baa55dc6bcee16126ecce03a2e, Key type:EC, Length:256, Cert Id:410672856, Valid from:2023/11/16 上午1:42, Valid until:2024/11/15 上午1:42
+2023-11-15 17:19:38,891 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/dagstorage
+2023-11-15 17:19:39,021 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: last-finalized-block, env: rnode0/dagstorage
+2023-11-15 17:19:39,036 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Building in-memory blockMetadataStore.
+2023-11-15 17:19:39,038 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: block-metadata, env: rnode0/dagstorage
+2023-11-15 17:19:39,062 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Reading data from blockMetadataStore done.
+2023-11-15 17:19:39,085 [INFO ] [main                ] [c.r.b.dag.BlockMetadataStore$]- Successfully built in-memory blockMetadataStore.
+2023-11-15 17:19:39,092 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/casperbuffer
+2023-11-15 17:19:39,093 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: parents-map, env: rnode0/casperbuffer
+2023-11-15 17:19:39,149 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/eval/history
+2023-11-15 17:19:39,149 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-roots, env: rnode0/eval/history
+2023-11-15 17:19:39,165 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: eval-history, env: rnode0/eval/history
+2023-11-15 17:19:40,101 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/history
+2023-11-15 17:19:40,102 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-roots, env: rnode0/rspace/history
+2023-11-15 17:19:40,102 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-history, env: rnode0/rspace/history
+2023-11-15 17:19:40,307 [DEBUG] [main                ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks-approved, env: rnode0/dagstorage
+2023-11-15 17:19:40,385 [INFO ] [main                ] [c.r.c.e.CasperLaunch$$anon$1 ]- Approved block found, reconnecting to existing network
+2023-11-15 17:19:40,406 [INFO ] [main                ] [c.r.casper.engine.Engine$    ]- Making a transition to Running state. Approved Block #0 (0fd8d49754...) with empty parents (supposedly genesis)
+2023-11-15 17:19:40,415 [INFO ] [main                ] [c.r.node.runtime.NodeRuntime ]- Starting stand-alone node.
+2023-11-15 17:19:41,394 [INFO ] [main                ] [c.r.n.r.ServersInstances$    ]- HTTP API server started at localhost:40403
+2023-11-15 17:19:41,405 [INFO ] [main                ] [c.r.n.r.ServersInstances$    ]- Admin HTTP API server started at localhost:40405
+2023-11-15 17:19:41,639 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:19:41,647 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:19:41,668 [INFO ] [node-runner-23      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 17:19:41,675 [INFO ] [node-runner-23      ] [c.r.c.e.CasperLaunch$$anon$1 ]- Checking pendant hashes: 0 items in CasperBuffer.
+2023-11-15 17:19:41,705 [INFO ] [node-runner-25      ] [c.r.n.r.ServersInstances$    ]- Internal API server started at 192.168.254.128:40402
+2023-11-15 17:19:41,705 [INFO ] [node-runner-24      ] [c.r.n.r.ServersInstances$    ]- Kademlia RPC server started at 192.168.254.128:40404
+2023-11-15 17:19:41,705 [INFO ] [node-runner-19      ] [c.r.n.r.ServersInstances$    ]- External API server started at localhost:40401
+2023-11-15 17:19:41,752 [DEBUG] [node-runner-22      ] [jdk.event.security           ]- X509Certificate: Alg:SHA256withRSA, Serial:752bd03efd500194, Subject:CN=example.com, Issuer:CN=example.com, Key type:RSA, Length:2048, Cert Id:1467855822, Valid from:2018/4/7 上午7:06, Valid until:10000/1/1 上午8:59
+2023-11-15 17:19:41,887 [INFO ] [node-runner-22      ] [c.r.n.r.ServersInstances$    ]- Listening for traffic on rnode://3d3dd0777281b1baa55dc6bcee16126ecce03a2e@192.168.254.128?protocol=40400&discovery=40404.
+2023-11-15 17:19:44,173 [DEBUG] [node-runner-22      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: latest-messages, env: rnode0/dagstorage
+2023-11-15 17:19:44,176 [DEBUG] [node-runner-22      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: invalid-blocks, env: rnode0/dagstorage
+2023-11-15 17:19:44,204 [DEBUG] [node-runner-22      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/blockstorage
+2023-11-15 17:19:44,205 [DEBUG] [node-runner-22      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: blocks, env: rnode0/blockstorage
+2023-11-15 17:19:44,232 [DEBUG] [node-runner-22      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 224cc28475123a2604cea8bd0730f33295a8a61c5ea192996ec17778cab68081.
+2023-11-15 17:19:44,276 [DEBUG] [node-runner-22      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: equivocation-tracker, env: rnode0/dagstorage
+2023-11-15 17:19:44,701 [DEBUG] [node-runner-24      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/deploystorage
+2023-11-15 17:19:44,701 [DEBUG] [node-runner-24      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy_storage, env: rnode0/deploystorage
+2023-11-15 17:19:44,705 [INFO ] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700068783989 -- /*new message in {
+	
+	contract @{"global_factory"}(getInfo, setInfo) = {
+		contract getInfo(ret) = {
+			for (msg <- message){
+				ret!(*msg)
+				|
+				message!(*msg)
+			}
+		}
+		|
+		contract setInfo(newMessage) = {
+			for (msg <- message) {
+				message!(*newMessage)
+			}
+		}
+	}
+	|
+	message!("Hello")
+}*/
+
+new userinfo,print(`rho:io:stdout`),ret in {
+userinfo!({"1":"1"})|
+	contract @{"usr_factory"}(register, login) = {
+		
+	
+		contract register(id,password,ret) = {
+			for(@message <- userinfo){
+				if(message.contains(*id)){
+					ret!("false")
+					|
+					userinfo!(message)
+					}
+				else
+				{
+			 userinfo!(message.union({*id:*password}))
+			 |
+			 print!(message.union({*id:*password}))
+			 |
+			 ret!("success")
+			    }
+			}
+			//userinfo.union({*publickey, "testusrName"})
+
+		}
+		|
+		contract login(id,password,ret) = {
+            //for (@message <- userinfo){
+               // print!(message)
+				//|
+				//userinfo!(message)
+           // }
+            //|
+		
+			
+            for(@message <- userinfo) {
+				print!(message)
+				|
+				
+				
+                if(message.contains(*id)) 
+				{
+                   if(message.get(*id)== *password)
+				    {
+					print!("Login Success") 
+					|
+                    ret!(message.get(*id))
+					|
+					userinfo!(message)
+					} 
+					else
+					{
+						print!("password fault") 
+						|
+						userinfo!(message)
+						|
+						ret!("passwordfault")
+					}//返回用户名
+                }
+				else
+				{
+                    print!("id not cunzai")
+					|
+					userinfo!(message)
+					|
+					ret!("id not cunzai")
+                }
+            }
+        }
+        
+	}
+}
+, Sig: 304402201e443308317e...49bd973f9e5b4b1bfe16, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 2
+2023-11-15 17:19:44,794 [DEBUG] [c-nio-worker-ELG-3-1] [io.perfmark.PerfMark         ]- Error during PerfMark.<clinit>
+java.lang.ClassNotFoundException: io.perfmark.impl.SecretPerfMarkImpl$PerfMarkImpl
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:527)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:315)
+	at io.perfmark.PerfMark.<clinit>(PerfMark.java:36)
+	at io.grpc.netty.NettyServerStream$TransportState.<init>(NettyServerStream.java:225)
+	at io.grpc.netty.NettyServerHandler.onHeadersRead(NettyServerHandler.java:439)
+	at io.grpc.netty.NettyServerHandler.access$900(NettyServerHandler.java:101)
+	at io.grpc.netty.NettyServerHandler$FrameListener.onHeadersRead(NettyServerHandler.java:813)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:373)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$FrameReadListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:321)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder$PrefaceFrameListener.onHeadersRead(DefaultHttp2ConnectionDecoder.java:665)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger$1.onHeadersRead(Http2InboundFrameLogger.java:56)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader$2.processFragment(DefaultHttp2FrameReader.java:483)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readHeadersFrame(DefaultHttp2FrameReader.java:491)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.processPayloadState(DefaultHttp2FrameReader.java:254)
+	at io.netty.handler.codec.http2.DefaultHttp2FrameReader.readFrame(DefaultHttp2FrameReader.java:160)
+	at io.netty.handler.codec.http2.Http2InboundFrameLogger.readFrame(Http2InboundFrameLogger.java:41)
+	at io.netty.handler.codec.http2.DefaultHttp2ConnectionDecoder.decodeFrame(DefaultHttp2ConnectionDecoder.java:174)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$FrameDecoder.decode(Http2ConnectionHandler.java:378)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler$PrefaceDecoder.decode(Http2ConnectionHandler.java:242)
+	at io.netty.handler.codec.http2.Http2ConnectionHandler.decode(Http2ConnectionHandler.java:438)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:498)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:437)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:276)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2023-11-15 17:19:45,128 [INFO ] [node-runner-22      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:19:47,205 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB environment: rnode0/rspace/cold
+2023-11-15 17:19:47,266 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: rspace-cold, env: rnode0/rspace/cold
+2023-11-15 17:19:50,117 [INFO ] [node-runner-23      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [4.978369789 sec]
+2023-11-15 17:19:50,125 [INFO ] [node-runner-22      ] [alizedHeightConstraintChecker]- Latest message is 2 blocks ahead of the last finalized block
+2023-11-15 17:19:50,556 [INFO ] [node-runner-20      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:19:50,567 [INFO ] [node-runner-20      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #3 (seqNum 3)
+2023-11-15 17:19:50,671 [INFO ] [node-runner-25      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:19:51,631 [INFO ] [node-runner-21      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 95264
+2023-11-15 17:19:54,253 [DEBUG] [node-runner-25      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: mergeable-channel-cache, env: rnode0/dagstorage
+2023-11-15 17:19:54,540 [INFO ] [node-runner-19      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #3 (32191c0524...) (1d) [3.973250392 sec]
+2023-11-15 17:19:54,556 [INFO ] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #3 (32191c0524...).
+2023-11-15 17:19:54,638 [INFO ] [node-runner-19      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #3 (32191c0524...) -- Sender ID 047d92364b... -- M Parent Hash 224cc28475... -- Contents f628263ef3...-- Shard ID root.
+2023-11-15 17:19:56,297 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:19:56,301 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:19:56,302 [INFO ] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #3 (32191c0524...) (1d) (Valid) [1.745015919 sec]
+2023-11-15 17:19:56,629 [DEBUG] [node-runner-18      ] [c.r.s.LmdbStoreManagerImpl   ]- Creating LMDB database: deploy-index, env: rnode0/dagstorage
+2023-11-15 17:19:56,676 [INFO ] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Block 32191c0524... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:19:56,679 [INFO ] [node-runner-21      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 32191c0524... to peers
+2023-11-15 17:19:56,686 [INFO ] [node-runner-20      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 32191c0524ee71ee7d42d63ef1f92c337df0631959e86b7f337744cf54394774 created and added.
+2023-11-15 17:19:56,687 [INFO ] [node-runner-21      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #3 (32191c0524...) created and added.
+2023-11-15 17:20:11,649 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:20:11,649 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:20:41,654 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:20:41,654 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:21:11,656 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:21:11,656 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:21:41,657 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:21:41,657 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:21:47,890 [DEBUG] [node-runner-21      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 32191c0524ee71ee7d42d63ef1f92c337df0631959e86b7f337744cf54394774.
+2023-11-15 17:22:11,659 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:22:11,659 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:22:41,661 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:22:41,662 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:23:11,663 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:23:11,663 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:23:41,665 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:23:41,665 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:24:11,667 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:24:11,667 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:24:41,669 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:24:41,669 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:25:11,670 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:25:11,670 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:25:41,671 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:25:41,671 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:25:56,613 [DEBUG] [node-runner-24      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 32191c0524ee71ee7d42d63ef1f92c337df0631959e86b7f337744cf54394774.
+2023-11-15 17:26:11,673 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:26:11,673 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:26:41,674 [DEBUG] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:26:41,674 [DEBUG] [node-runner-22      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:27:11,675 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:27:11,675 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:27:22,896 [DEBUG] [node-runner-23      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 32191c0524ee71ee7d42d63ef1f92c337df0631959e86b7f337744cf54394774.
+2023-11-15 17:27:22,940 [INFO ] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700069242842 -- new userinfo, register, login ,ret in {
+                      @{"usr_factory"}!(*register, *login)
+                     
+                      |
+                      login!("1","1", *ret)
+                  }, Sig: 30440220091e16ae1ffc...52aed7b48609a259644c, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 3
+2023-11-15 17:27:22,954 [INFO ] [node-runner-20      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:27:23,213 [INFO ] [node-runner-19      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [258.619983 ms]
+2023-11-15 17:27:23,215 [INFO ] [node-runner-21      ] [alizedHeightConstraintChecker]- Latest message is 3 blocks ahead of the last finalized block
+2023-11-15 17:27:23,418 [INFO ] [node-runner-24      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:27:23,420 [INFO ] [node-runner-19      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #4 (seqNum 4)
+2023-11-15 17:27:23,459 [INFO ] [node-runner-24      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:27:24,006 [DEBUG] [node-runner-25      ] [coop.rchain.rholang.stdout   ]- {"1" : "1"}
+2023-11-15 17:27:24,006 [DEBUG] [node-runner-24      ] [coop.rchain.rholang.stdout   ]- "Login Success"
+2023-11-15 17:27:24,008 [INFO ] [node-runner-24      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 94368
+2023-11-15 17:27:25,002 [INFO ] [node-runner-21      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #4 (4c52ce9093...) (1d) [1.581633505 sec]
+2023-11-15 17:27:25,002 [INFO ] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #4 (4c52ce9093...).
+2023-11-15 17:27:25,024 [INFO ] [node-runner-21      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #4 (4c52ce9093...) -- Sender ID 047d92364b... -- M Parent Hash 32191c0524... -- Contents eb701aa485...-- Shard ID root.
+2023-11-15 17:27:25,575 [DEBUG] [node-runner-20      ] [coop.rchain.rholang.stdout   ]- {"1" : "1"}
+2023-11-15 17:27:25,575 [DEBUG] [node-runner-25      ] [coop.rchain.rholang.stdout   ]- "Login Success"
+2023-11-15 17:27:26,355 [INFO ] [node-runner-24      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:27:26,355 [INFO ] [node-runner-24      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:27:26,356 [INFO ] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #4 (4c52ce9093...) (1d) (Valid) [1.353215169 sec]
+2023-11-15 17:27:26,485 [INFO ] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Block 4c52ce9093... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:27:26,486 [INFO ] [node-runner-24      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 4c52ce9093... to peers
+2023-11-15 17:27:26,487 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #4 (4c52ce9093...) created and added.
+2023-11-15 17:27:26,487 [INFO ] [node-runner-20      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 4c52ce9093181bb675aba9c38474eb5a911bbc414156d4f8ee4f902068d511f8 created and added.
+2023-11-15 17:27:31,564 [DEBUG] [node-runner-18      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 4c52ce9093181bb675aba9c38474eb5a911bbc414156d4f8ee4f902068d511f8.
+2023-11-15 17:27:34,250 [DEBUG] [node-runner-25      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 4c52ce9093181bb675aba9c38474eb5a911bbc414156d4f8ee4f902068d511f8.
+2023-11-15 17:27:41,676 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:27:41,676 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:28:09,086 [DEBUG] [node-runner-20      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 4c52ce9093181bb675aba9c38474eb5a911bbc414156d4f8ee4f902068d511f8.
+2023-11-15 17:28:09,123 [INFO ] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700069289042 -- new  register,login ,ret in {
+                      @{"usr_factory"}!(*register, *login)
+                     
+                      |
+                      register!("1","1", *ret)
+                  }, Sig: 3045022100a2141fdcd3...27d81da1bde66b25d9aa, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 4
+2023-11-15 17:28:09,138 [INFO ] [node-runner-21      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:28:09,352 [INFO ] [node-runner-25      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [213.135477 ms]
+2023-11-15 17:28:09,353 [INFO ] [node-runner-19      ] [alizedHeightConstraintChecker]- Latest message is 4 blocks ahead of the last finalized block
+2023-11-15 17:28:09,536 [INFO ] [node-runner-20      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:28:09,537 [INFO ] [node-runner-25      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #5 (seqNum 5)
+2023-11-15 17:28:09,577 [INFO ] [node-runner-19      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:28:10,061 [INFO ] [node-runner-25      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 95203
+2023-11-15 17:28:11,005 [INFO ] [node-runner-25      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #5 (c1c885c463...) (1d) [1.467151989 sec]
+2023-11-15 17:28:11,005 [INFO ] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #5 (c1c885c463...).
+2023-11-15 17:28:11,024 [INFO ] [node-runner-25      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #5 (c1c885c463...) -- Sender ID 047d92364b... -- M Parent Hash 4c52ce9093... -- Contents 7af037d9bb...-- Shard ID root.
+2023-11-15 17:28:11,677 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:28:11,677 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:28:12,304 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:28:12,304 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:28:12,305 [INFO ] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #5 (c1c885c463...) (1d) (Valid) [1.299273299 sec]
+2023-11-15 17:28:12,418 [INFO ] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Block c1c885c463... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:28:12,418 [INFO ] [node-runner-20      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash c1c885c463... to peers
+2023-11-15 17:28:12,419 [INFO ] [node-runner-20      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #5 (c1c885c463...) created and added.
+2023-11-15 17:28:12,419 [INFO ] [node-runner-22      ] [c.rchain.casper.api.BlockAPI$]- Success! Block c1c885c463fd4fc60659961719c898baa42a3f9845894cee4e0a0ce2777df5d8 created and added.
+2023-11-15 17:28:17,480 [DEBUG] [node-runner-24      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for c1c885c463fd4fc60659961719c898baa42a3f9845894cee4e0a0ce2777df5d8.
+2023-11-15 17:28:41,678 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:28:41,678 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (2 items unexpired).
+2023-11-15 17:29:11,494 [DEBUG] [node-runner-21      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for c1c885c463fd4fc60659961719c898baa42a3f9845894cee4e0a0ce2777df5d8.
+2023-11-15 17:29:11,531 [INFO ] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700069351427 -- new  register,login ,ret in {
+                      @{"usr_factory"}!(*register, *login)
+                     
+                      |
+                      register!("1","1", *ret)
+                  }, Sig: 304502210085e8cf5c10...872d36265726dd514e5a, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 5
+2023-11-15 17:29:11,537 [INFO ] [node-runner-23      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:29:11,679 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:29:11,681 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (2 items unexpired).
+2023-11-15 17:29:11,764 [INFO ] [node-runner-22      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [226.483818 ms]
+2023-11-15 17:29:11,766 [INFO ] [node-runner-18      ] [alizedHeightConstraintChecker]- Latest message is 5 blocks ahead of the last finalized block
+2023-11-15 17:29:11,975 [INFO ] [node-runner-22      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:29:11,977 [INFO ] [node-runner-20      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #6 (seqNum 6)
+2023-11-15 17:29:12,008 [INFO ] [node-runner-24      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:29:12,443 [INFO ] [node-runner-19      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 95203
+2023-11-15 17:29:13,303 [INFO ] [node-runner-20      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #6 (530c612838...) (1d) [1.326121159 sec]
+2023-11-15 17:29:13,303 [INFO ] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #6 (530c612838...).
+2023-11-15 17:29:13,322 [INFO ] [node-runner-20      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #6 (530c612838...) -- Sender ID 047d92364b... -- M Parent Hash c1c885c463... -- Contents 8023253cd0...-- Shard ID root.
+2023-11-15 17:29:14,509 [INFO ] [node-runner-21      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:29:14,510 [INFO ] [node-runner-21      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:29:14,510 [INFO ] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #6 (530c612838...) (1d) (Valid) [1.206647638 sec]
+2023-11-15 17:29:14,598 [INFO ] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Block 530c612838... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:29:14,599 [INFO ] [node-runner-19      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 530c612838... to peers
+2023-11-15 17:29:14,599 [INFO ] [node-runner-19      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #6 (530c612838...) created and added.
+2023-11-15 17:29:14,600 [INFO ] [node-runner-21      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 530c612838e6797e8735818a0094f72dd391714487d119cf2e4d0a297cf52641 created and added.
+2023-11-15 17:29:19,658 [DEBUG] [node-runner-25      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 530c612838e6797e8735818a0094f72dd391714487d119cf2e4d0a297cf52641.
+2023-11-15 17:29:41,682 [DEBUG] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:29:41,683 [DEBUG] [node-runner-22      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 17:30:11,685 [DEBUG] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:30:11,685 [DEBUG] [node-runner-22      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 17:30:41,686 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:30:41,686 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 17:31:11,687 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:31:11,688 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 17:31:41,689 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:31:41,689 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 17:32:11,690 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:32:11,690 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (2 items unexpired).
+2023-11-15 17:32:41,691 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:32:41,692 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (2 items unexpired).
+2023-11-15 17:33:11,693 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:33:11,693 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:33:41,694 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:33:41,694 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:34:11,784 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:34:11,978 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:34:41,979 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:34:41,979 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:35:11,980 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:35:11,981 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:35:41,982 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:35:42,078 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:36:12,079 [DEBUG] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:36:12,079 [DEBUG] [node-runner-25      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:36:42,080 [DEBUG] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:36:42,080 [DEBUG] [node-runner-22      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:37:12,081 [DEBUG] [node-runner-24      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:37:12,081 [DEBUG] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:37:42,082 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:37:42,082 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:38:12,083 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:38:12,083 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:38:42,085 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:38:42,085 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:39:12,086 [DEBUG] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:39:12,086 [DEBUG] [node-runner-19      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:39:42,087 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:39:42,088 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:40:12,089 [DEBUG] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:40:12,089 [DEBUG] [node-runner-20      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:40:42,090 [DEBUG] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:40:42,091 [DEBUG] [node-runner-22      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:41:12,092 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:41:12,092 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:41:42,093 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:41:42,093 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:41:42,158 [INFO ] [node-runner-18      ] [c.r.casper.engine.Running$   ]- Requesting tips update as newest latest message is more then 10 minutes old. Might be network is faulty.
+2023-11-15 17:41:42,168 [INFO ] [node-runner-18      ] [c.r.c.util.comm.CommUtilOps  ]- Requested fork tip from peers
+2023-11-15 17:42:12,095 [DEBUG] [node-runner-21      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:42:12,095 [DEBUG] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (0 items unexpired).
+2023-11-15 17:42:16,364 [DEBUG] [node-runner-20      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 530c612838e6797e8735818a0094f72dd391714487d119cf2e4d0a297cf52641.
+2023-11-15 17:42:16,538 [INFO ] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700070136048 -- new  register,login ,ret in {
+                      @{"usr_factory"}!(*register, *login)
+                     
+                      |
+                      register!("1","1", *ret)
+                  }, Sig: 304402207e0796b0d1c4...24fe7d5551a3f28e8d6a, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 6
+2023-11-15 17:42:16,546 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:42:17,168 [INFO ] [node-runner-18      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [621.610738 ms]
+2023-11-15 17:42:17,169 [INFO ] [node-runner-22      ] [alizedHeightConstraintChecker]- Latest message is 6 blocks ahead of the last finalized block
+2023-11-15 17:42:17,360 [INFO ] [node-runner-22      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:42:17,362 [INFO ] [node-runner-23      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #7 (seqNum 7)
+2023-11-15 17:42:17,396 [INFO ] [node-runner-25      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:42:17,914 [INFO ] [node-runner-25      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 95203
+2023-11-15 17:42:18,726 [INFO ] [node-runner-20      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #7 (b578f7e637...) (1d) [1.363975473 sec]
+2023-11-15 17:42:18,727 [INFO ] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #7 (b578f7e637...).
+2023-11-15 17:42:18,747 [INFO ] [node-runner-20      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #7 (b578f7e637...) -- Sender ID 047d92364b... -- M Parent Hash 530c612838... -- Contents d5413cad57...-- Shard ID root.
+2023-11-15 17:42:19,946 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:42:19,947 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:42:19,947 [INFO ] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #7 (b578f7e637...) (1d) (Valid) [1.220292709 sec]
+2023-11-15 17:42:20,128 [INFO ] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Block b578f7e637... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:42:20,129 [INFO ] [node-runner-23      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash b578f7e637... to peers
+2023-11-15 17:42:20,130 [INFO ] [node-runner-23      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #7 (b578f7e637...) created and added.
+2023-11-15 17:42:20,130 [INFO ] [node-runner-18      ] [c.rchain.casper.api.BlockAPI$]- Success! Block b578f7e6376a3e585ce369a86fd94caba214d13582d9135525197aec7748baf2 created and added.
+2023-11-15 17:42:25,319 [DEBUG] [node-runner-24      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for b578f7e6376a3e585ce369a86fd94caba214d13582d9135525197aec7748baf2.
+2023-11-15 17:42:41,703 [DEBUG] [node-runner-25      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for b578f7e6376a3e585ce369a86fd94caba214d13582d9135525197aec7748baf2.
+2023-11-15 17:42:41,732 [INFO ] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700070161665 -- new  register,login ,ret in {
+                      @{"usr_factory"}!(*register, *login)
+                     
+                      |
+                      register!("2","2", *ret)
+                  }, Sig: 30450221008ea671f2ad...a09f4e5c1ffcffa3833e, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 7
+2023-11-15 17:42:41,750 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:42:41,954 [INFO ] [node-runner-21      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [203.778558 ms]
+2023-11-15 17:42:41,955 [INFO ] [node-runner-21      ] [alizedHeightConstraintChecker]- Latest message is 7 blocks ahead of the last finalized block
+2023-11-15 17:42:42,096 [DEBUG] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:42:42,096 [DEBUG] [node-runner-23      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (1 items unexpired).
+2023-11-15 17:42:42,133 [INFO ] [node-runner-23      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:42:42,134 [INFO ] [node-runner-19      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #8 (seqNum 8)
+2023-11-15 17:42:42,172 [INFO ] [node-runner-18      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:42:42,614 [DEBUG] [node-runner-21      ] [coop.rchain.rholang.stdout   ]- {"1" : "1", "2" : "2"}
+2023-11-15 17:42:42,614 [INFO ] [node-runner-21      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 94874
+2023-11-15 17:42:43,451 [INFO ] [node-runner-19      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #8 (f21288e9be...) (1d) [1.316619378 sec]
+2023-11-15 17:42:43,451 [INFO ] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #8 (f21288e9be...).
+2023-11-15 17:42:43,475 [INFO ] [node-runner-19      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #8 (f21288e9be...) -- Sender ID 047d92364b... -- M Parent Hash b578f7e637... -- Contents 20305dea1d...-- Shard ID root.
+2023-11-15 17:42:43,983 [DEBUG] [node-runner-20      ] [coop.rchain.rholang.stdout   ]- {"1" : "1", "2" : "2"}
+2023-11-15 17:42:44,661 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:42:44,661 [INFO ] [node-runner-19      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:42:44,662 [INFO ] [node-runner-19      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #8 (f21288e9be...) (1d) (Valid) [1.210202955 sec]
+2023-11-15 17:42:44,753 [INFO ] [node-runner-21      ] [.r.c.e.BlockRetriever$$anon$1]- Block f21288e9be... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:42:44,753 [INFO ] [node-runner-21      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash f21288e9be... to peers
+2023-11-15 17:42:44,754 [INFO ] [node-runner-22      ] [c.rchain.casper.api.BlockAPI$]- Success! Block f21288e9be90ecbac15b86898e0ed9f5db1c0044293a0c8f8371a048e4bfe98c created and added.
+2023-11-15 17:42:44,754 [INFO ] [node-runner-21      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #8 (f21288e9be...) created and added.
+2023-11-15 17:42:49,814 [DEBUG] [node-runner-18      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for f21288e9be90ecbac15b86898e0ed9f5db1c0044293a0c8f8371a048e4bfe98c.
+2023-11-15 17:42:57,159 [DEBUG] [node-runner-25      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for f21288e9be90ecbac15b86898e0ed9f5db1c0044293a0c8f8371a048e4bfe98c.
+2023-11-15 17:42:57,188 [INFO ] [node-runner-22      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700070177137 -- new userinfo, register, login ,ret in {
+                      @{"usr_factory"}!(*register, *login)
+                     
+                      |
+                      login!("2","2", *ret)
+                  }, Sig: 3045022100eba71a75e0...559cce4bf3c13b8d5dd0, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 8
+2023-11-15 17:42:57,196 [INFO ] [node-runner-21      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:42:57,384 [INFO ] [node-runner-25      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [187.040184 ms]
+2023-11-15 17:42:57,386 [INFO ] [node-runner-25      ] [alizedHeightConstraintChecker]- Latest message is 8 blocks ahead of the last finalized block
+2023-11-15 17:42:57,558 [INFO ] [node-runner-20      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:42:57,560 [INFO ] [node-runner-18      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #9 (seqNum 9)
+2023-11-15 17:42:57,597 [INFO ] [node-runner-19      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:42:58,004 [DEBUG] [node-runner-21      ] [coop.rchain.rholang.stdout   ]- "id not cunzai"
+2023-11-15 17:42:58,005 [DEBUG] [node-runner-25      ] [coop.rchain.rholang.stdout   ]- {"1" : "1"}
+2023-11-15 17:42:58,005 [INFO ] [node-runner-25      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 94421
+2023-11-15 17:42:58,865 [INFO ] [node-runner-25      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #9 (444c7bef2c...) (1d) [1.305179001 sec]
+2023-11-15 17:42:58,865 [INFO ] [node-runner-25      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #9 (444c7bef2c...).
+2023-11-15 17:42:58,889 [INFO ] [node-runner-25      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #9 (444c7bef2c...) -- Sender ID 047d92364b... -- M Parent Hash f21288e9be... -- Contents ea5afcbbcf...-- Shard ID root.
+2023-11-15 17:42:59,363 [DEBUG] [node-runner-20      ] [coop.rchain.rholang.stdout   ]- {"1" : "1"}
+2023-11-15 17:42:59,364 [DEBUG] [node-runner-21      ] [coop.rchain.rholang.stdout   ]- "id not cunzai"
+2023-11-15 17:43:00,032 [INFO ] [node-runner-20      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:43:00,032 [INFO ] [node-runner-20      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:43:00,033 [INFO ] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #9 (444c7bef2c...) (1d) (Valid) [1.167208886 sec]
+2023-11-15 17:43:00,121 [INFO ] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Block 444c7bef2c... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:43:00,122 [INFO ] [node-runner-24      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 444c7bef2c... to peers
+2023-11-15 17:43:00,122 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #9 (444c7bef2c...) created and added.
+2023-11-15 17:43:00,122 [INFO ] [node-runner-19      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 444c7bef2c5ef48a0d842dee0af9dfe42d33fba912dabd2b25e45140df85808a created and added.
+2023-11-15 17:43:05,176 [DEBUG] [node-runner-23      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 444c7bef2c5ef48a0d842dee0af9dfe42d33fba912dabd2b25e45140df85808a.
+2023-11-15 17:43:10,992 [DEBUG] [node-runner-22      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 444c7bef2c5ef48a0d842dee0af9dfe42d33fba912dabd2b25e45140df85808a.
+2023-11-15 17:43:11,016 [INFO ] [node-runner-23      ] [c.r.c.MultiParentCasperImpl  ]- Received DeployData #1700070190948 -- new userinfo, register, login ,ret in {
+                      @{"usr_factory"}!(*register, *login)
+                     
+                      |
+                      login!("1","1", *ret)
+                  }, Sig: 3044022022d46ccc426a...66a92bc6deb57dbc2c35, SigAlgorithm: secp256k1, ValidAfterBlockNumber: 9
+2023-11-15 17:43:11,021 [INFO ] [node-runner-21      ] [c.r.n.i.ProposerInstance$    ]- Propose started
+2023-11-15 17:43:11,213 [INFO ] [node-runner-20      ] [c.r.c.b.proposer.Proposer    ]- getCasperSnapshot [191.298816 ms]
+2023-11-15 17:43:11,214 [INFO ] [node-runner-18      ] [alizedHeightConstraintChecker]- Latest message is 9 blocks ahead of the last finalized block
+2023-11-15 17:43:11,382 [INFO ] [node-runner-22      ] [.c.SynchronyConstraintChecker]- Seen 0 senders with weight 0 out of total 12 (0.0 out of 0.0 needed)
+2023-11-15 17:43:11,384 [INFO ] [node-runner-23      ] [c.r.c.b.p.BlockCreator$      ]- Creating block #10 (seqNum 10)
+2023-11-15 17:43:11,417 [INFO ] [node-runner-23      ] [c.r.casper.rholang.RuntimeOps]- PreCharging 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 for 100000
+2023-11-15 17:43:11,843 [DEBUG] [node-runner-25      ] [coop.rchain.rholang.stdout   ]- {"1" : "1"}
+2023-11-15 17:43:11,843 [DEBUG] [node-runner-23      ] [coop.rchain.rholang.stdout   ]- "Login Success"
+2023-11-15 17:43:11,844 [INFO ] [node-runner-23      ] [c.r.casper.rholang.RuntimeOps]- Refunding 045fe473dfecbf8f2c9043ce85380423f860e551c701078879f76b0ab5519074e5f1eac8ea7ebf4d503b36733e388a1774b01b3a8f93d2010a9b66202b97c45ed7 with 94368
+2023-11-15 17:43:12,098 [DEBUG] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Requesting CasperBuffer pendant hashes, 0 items.
+2023-11-15 17:43:12,098 [DEBUG] [node-runner-18      ] [.r.c.e.BlockRetriever$$anon$1]- Running BlockRetriever maintenance (3 items unexpired).
+2023-11-15 17:43:12,663 [INFO ] [node-runner-20      ] [c.r.c.b.p.BlockCreator$      ]- Block created: #10 (0b2b2dd8db...) (1d) [1.279452188 sec]
+2023-11-15 17:43:12,663 [INFO ] [node-runner-20      ] [c.r.c.MultiParentCasperImpl  ]- Validating block #10 (0b2b2dd8db...).
+2023-11-15 17:43:12,685 [INFO ] [node-runner-20      ] [c.r.c.u.r.InterpreterUtil$   ]- Computed parents post state for Block #10 (0b2b2dd8db...) -- Sender ID 047d92364b... -- M Parent Hash 444c7bef2c... -- Contents ac42df0bbc...-- Shard ID root.
+2023-11-15 17:43:13,143 [DEBUG] [node-runner-20      ] [coop.rchain.rholang.stdout   ]- {"1" : "1"}
+2023-11-15 17:43:13,143 [DEBUG] [node-runner-21      ] [coop.rchain.rholang.stdout   ]- "Login Success"
+2023-11-15 17:43:13,816 [INFO ] [node-runner-18      ] [c.r.c.EquivocationDetector$  ]- Calculate checkNeglectedEquivocationsWithUpdate
+2023-11-15 17:43:13,817 [INFO ] [node-runner-18      ] [c.r.c.EquivocationDetector$  ]- Calculate checkEquivocations.
+2023-11-15 17:43:13,817 [INFO ] [node-runner-18      ] [c.r.c.MultiParentCasperImpl  ]- Block replayed: #10 (0b2b2dd8db...) (1d) (Valid) [1.153209045 sec]
+2023-11-15 17:43:13,903 [INFO ] [node-runner-24      ] [.r.c.e.BlockRetriever$$anon$1]- Block 0b2b2dd8db... is not in RequestedBlocks. Adding and marking recieved.
+2023-11-15 17:43:13,903 [INFO ] [node-runner-24      ] [c.r.c.util.comm.CommUtilOps  ]- Sent hash 0b2b2dd8db... to peers
+2023-11-15 17:43:13,904 [INFO ] [node-runner-24      ] [c.r.n.i.ProposerInstance$    ]- Propose finished: ProposeSuccess(Valid) Block #10 (0b2b2dd8db...) created and added.
+2023-11-15 17:43:13,904 [INFO ] [node-runner-19      ] [c.rchain.casper.api.BlockAPI$]- Success! Block 0b2b2dd8db7ff287d99bd5addec73b95671201f37adcad94134d8a3f91d3f057 created and added.
+2023-11-15 17:43:18,957 [DEBUG] [node-runner-19      ] [c.r.c.safety.CliqueOracle$   ]- Calculating fault tolerance for 0b2b2dd8db7ff287d99bd5addec73b95671201f37adcad94134d8a3f91d3f057.
