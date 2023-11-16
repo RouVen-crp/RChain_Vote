@@ -1,4 +1,4 @@
-# RChain_Vote_Frontend
+# RChain_Vote
   RChain Vote项目的前端页面（vue3完成）
 # RChain Vote Project
 
