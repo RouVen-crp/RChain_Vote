@@ -91,7 +91,7 @@
                 <v-btn
                   color="#3498db"
                   :ripple="{ class: 'text-green' }"
-                  @click="submitAgenda(NameOf_NewAgenda)"
+                  @click="submitAgenda(NameOf_NewAgenda);showvote()"
                 >
                   Submit
                 </v-btn>  
@@ -130,7 +130,7 @@
             >
             <!-- card是agenda -->
             
-              <v-card >
+              <v-card prepend-icon="mdi-vote">
                 <!-- toolbar是agenda的表头，包含删除功能 -->
                 <v-toolbar :title="AVote.Agda_Name" density="compact" color="#ecf0f1">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
@@ -242,7 +242,7 @@
                             <v-btn
                               color="#3498db"
                               variant="text"
-                              @click="CreateVote(UserInput, NameOf_NewVote, targetAgenda, vc)"
+                              @click="CreateVote(UserInput, NameOf_NewVote, targetAgenda, vc);showvote()"
                               :ripple="{ class: 'text-green' }"
                             >
                               SUBMIT
@@ -255,7 +255,12 @@
                     </v-dialog>
 
                     </v-dialog>
-          
+
+                    <v-btn
+                    color="primary">
+                    Submit Vote info
+                    </v-btn>
+
                   <v-menu :location="end">
                     <template v-slot:activator="{ props }">
           
@@ -270,7 +275,7 @@
                     prepend-icon="mdi-delete"
                     color="#e74c3c"
                     :ripple="{ class: 'text-red' }"                   
-                    @click="removeCard(AVote.Agda_Name)">
+                    @click="removeCard(AVote.Agda_Name);showvote()">
                       Delete
                     </v-btn>
           
@@ -286,9 +291,9 @@
                   <template v-for="v in AVote.Vts_Of_Agda " :key="v.Vt_Name">
                     <v-list-item >
                       <v-list-item-title>{{ v.Vt_Name }}</v-list-item-title>
-                      <!-- <template v-slot:prepend>
-                        <v-avatar color="grey-darken-1"></v-avatar>
-                      </template> -->
+                      <template v-slot:prepend>
+                        <v-avatar icon="mdi-vote"></v-avatar>
+                      </template>
                         <v-select label="Select" multiple :items="v.Choices">
 
                         </v-select>
@@ -322,6 +327,8 @@
   </script>
   
   <script>
+    import {get} from "@/router/axiosuse";
+  import {post} from "@/router/axiosuse";
     export default {
       
 //下面是数据
@@ -338,8 +345,8 @@
 
       NameOf_NewAgenda: '',
       AVotes: [
-        {
-          Agda_Name: 'eg', vcount: '2',
+        { 
+          Agda_Name: 'ceshi', vcount: '2',
           Vts_Of_Agda: [
             {
               Vt_Name: 'egvt', 
@@ -354,22 +361,76 @@
               ]
           }
         ]
-      }
+      },
+     
     ],
       UserInput: [],
       drawer: null,
     }),
 
-
+    mounted() {
+    // 在页面进入后执行的代码
+    console.log('huanying');
+    
+    // 调用你想运行的函数
+    this.getvotes();
+  },
 
 // 下面是方法
       methods: {
+        returnavotes(stringavote)
+        {  
+          const newvotes=[];
+          
+          const stringvotes=stringavote.split('$$$$');
+          for (let i = 0; i < stringvotes.length; i++) {
+            const vtsagda = [];
+            const avote = stringvotes[i].split('#$$$'); 
+            console.log("avote");
+            console.log(avote);
+            const vts   =    avote[2].split('##$$');
+            console.log("vts");
+            console.log(vts);
+            for(let j= 0; j < vts.length; j++){
+              const avt = vts[j].split('###$');
+              console.log("avt");
+              console.log(avt);
+              const newvts={
+               
+                Vt_Name: avt[0],
+              
+                //Choices: avt[1].split('####'),
+                Choices: ['c1', 'c2', 'c3', '...'],
+              }
+              vtsagda.push(newvts);
+            }
+           
+    const newVote = {
+
+      Agda_Name: avote[0],
+      vcount: avote[1],
+      Vts_Of_Agda: vtsagda
+         };
+
+    newvotes.push(newVote);
+    }
+
+  this.AVotes=newvotes;
+      },
+        arrtostring(arr,specialstring){
+          var a="";
+          for (var i = 0; i < arr.length; i++) {
+           if(i!=arr.length-1){
+           a=a+arr[i]+specialstring;
+          
+           }
+           else{a=a+arr[i];}
+            }   
+            return a;     
+         },
 
         GiveVoteNum(Ag_name) {
           this.dialogCreateVote = true;
-          // const num = parseInt(this.CreateVote_SelectedItem, 10);
-          // const index = this.AVotes.findIndex((card) => card.Agda_Name === Ag_name);
-          // this.AVotes[index][1] = num;
         },
 
         CreateVote(input, name, CurrentAgenda, vc) {
@@ -416,6 +477,78 @@
       },
       LogOut() {
             this.$router.push({ path: '/LogAndReg' })
+        },
+        Logged() {
+            this.$router.push({ path: '/MainPage' })
+        },
+        getvotes(){
+          console.log("getvotes")
+          post(
+            '/getvote',
+            {
+              votes: "getvote",
+
+            },
+          ).then(res =>{
+            console.log(res.data);
+            this.returnavotes(res.data)
+           alert("get sucessful");
+            
+          })
+        },
+
+        showvote(){
+            console.log("showvote");
+            console.log("zzzzzzzzzz");
+            console.log(this.AVotes.length);
+            var stringvotes="";
+            for (var i = 0; i < this.AVotes.length; i++) {
+            var avote="";
+            var stringvts= "";
+           
+            let vts=this.AVotes[i].Vts_Of_Agda;
+               for (var j = 0; j< vts.length; j++) {
+                if(j!=vts.length-1){
+                   stringvts=stringvts+vts[j].Vt_Name+"###$"+this.arrtostring(vts[j].Choices,"####")+"##$$";
+                }
+                else{stringvts=stringvts+vts[j].Vt_Name+"###$"+this.arrtostring(vts[j].Choices,"####")}
+                          
+           }
+          
+           
+           avote = this.AVotes[i].Agda_Name+"#$$$"+this.AVotes[i].vcount+"#$$$"+stringvts;
+           
+           console.log("here");
+           console.log(avote);
+           console.log("here");
+           console.log(this.AVotes.length)
+           if(i!=this.AVotes.length-1){
+           stringvotes=stringvotes+avote+"$$$$";
+           
+           }
+           else{
+            stringvotes=stringvotes+avote;
+           }
+           
+          }
+          console.log(stringvotes)
+            
+            post(
+            '/showvote',
+            {
+              votes: stringvotes
+             
+
+            },
+          ).then(res =>{
+            
+            console.log(res.data);
+           
+            alert("sucessful");
+           
+            console.log(typeof res.data);
+            
+          })
         },
 
     },
