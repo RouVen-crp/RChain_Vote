@@ -13,7 +13,7 @@
                         <v-card-text class="mt-12">
                           <h1
                             class="text-center display-2"
-                          >Sign in</h1>
+                          >Sign In Here</h1>
                           <div class="text-center mt-12">
 
                           </div>
@@ -39,12 +39,16 @@
                           </v-form>
                           <!-- <h3 class="text-center mt-4">Forgot your password ?</h3> -->
                         </v-card-text>
-                        <div class="text-center">
-                          <v-btn rounded size="large" color="teal accent-3" @click="login">SIGN IN</v-btn>
+                        
+                          <div class="text-center">
+                            <v-btn rounded size="large" color="teal accent-3" @click="login"
+                            :loading="loading">
+                            SIGN IN</v-btn>
+                          </div>
+                        
                           <div class="text-center mt-12">
 
-                          </div>
-                        </div>
+                          </div>  
                       </v-col>
                       <v-col cols="12" md="3" class="teal accent-3">
                         <v-card-text class="white--text mt-8">
@@ -98,7 +102,8 @@
                           </v-form>
                         </v-card-text>
                         <div class="text-center">
-                          <v-btn @click="register" rounded color="teal accent-3" dark size="large">SIGN UP</v-btn>
+                          <v-btn @click="register" rounded color="teal accent-3" dark size="large"
+                          :loading="loading">SIGN UP</v-btn>
                           <div class="text-center mt-10">
 
                           </div>
@@ -135,13 +140,16 @@
   export default {
     data: () => ({
       imageUrl: '/imgs/h3.jpg',
-      step: 1
+      step: 1,
+      loading: false
     }),
     methods: {
         Logged() {
             this.$router.push({ path: '/MainPage' })
         },
         login(){
+          this.loading = true
+          setTimeout(() => (this.loading = false), 3000)
           console.log("login")
           post(
             '/login',
@@ -164,6 +172,8 @@
         },
         register(){
           console.log("register")
+          this.loading = true
+          setTimeout(() => (this.loading = false), 3000)
           post(
             '/Register',
             {

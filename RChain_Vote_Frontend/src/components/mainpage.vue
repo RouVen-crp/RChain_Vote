@@ -1,9 +1,6 @@
 <template>
-    <v-app id="inspire">
-
-      <!-- navigation-drawer是左侧导航栏 -->
-
-      <v-navigation-drawer v-model="drawer"
+    <v-app id="inspire" >
+        <v-navigation-drawer v-model="drawer" app
       color="#3498db"
       >
         <v-card
@@ -111,28 +108,28 @@
 
         </v-list>
       </v-navigation-drawer>
-
       <!-- v-main是中间的主体部分 -->
-      <v-main :style="{ backgroundColor: containerColor }">
+      <v-main :style="{ backgroundColor: containerColor}" 
+      class="transparent-container " >
         <v-container
-          class="py-8 px-6 #ecf0f1 "
+          class="py-8 px-6 #ecf0f1 transparent-container "
           :style="{ backgroundColor: containerColor }"
           fluid
           v-model="AContainer"
         >
-          <v-row>
+          <v-row class="transparent-container">
             <v-col
               v-for="AVote in AVotes"
               :key="AVote.Agda_Name"
               :id="AVote.Agda_Name"
               cols="12"
-              color="#ecf0f1"
+              color="#ecf0f1" class="transparent-container"
             >
             <!-- card是agenda -->
             
-              <v-card prepend-icon="mdi-calendar" :title="AVote.Agda_Name">
+              <v-card prepend-icon="mdi-calendar" :title="AVote.Agda_Name" class="transparent-container">
                 <!-- toolbar是agenda的表头，包含删除功能 -->
-                <v-toolbar  density="compact" color="#ecf0f1">
+                <v-toolbar  density="compact" color="#ecf0f1" class="transparent-container">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
                       <!-- 添加投票Vote -->
                       <v-spacer></v-spacer>
@@ -258,7 +255,7 @@
                     </v-dialog>
 
                     <v-btn
-                    color="primary" @click="extractSelection(AVote, selectedItems)">
+                    color="primary" :disabled="buttonDisabled" @click="extractSelection(AVote, selectedItems)">
                     Submit Vote info
                     </v-btn>
 
@@ -324,6 +321,10 @@
           </v-row>
         </v-container>
       </v-main>
+
+      <!-- navigation-drawer是左侧导航栏 -->
+
+      
     </v-app>
   </template>
   
@@ -337,6 +338,21 @@
 
   </script>
   
+  <style scoped>
+  .app-with-background {
+    background-image: url('/imgs/mainbg.jpg');
+    background-size: cover; /* 可以根据需要选择其他值，比如 'contain' */
+    background-position: center center;
+  }
+  .transparent-container {
+    background: rgba(255, 255, 255, 0.3); /* 调整最后一个值 (0.5) 以改变透明度，范围是 0（完全透明）到 1（完全不透明） */
+  }
+
+  ::v-deep .v-navigation-drawer {
+    background-color: rgba(52, 152, 219, 0.9) !important;
+  }
+  </style>
+
   <script>
     import {get} from "@/router/axiosuse";
   import {post} from "@/router/axiosuse";
@@ -344,10 +360,11 @@
       
 //下面是数据
       data: () => ({
-
+        imageUrl: '/imgs/mainbg.jpg',
         containerColor: '#ecf0f1',
         ListColor: '#2c3e50',
         // VotesOf_a_Agenda: [],
+        buttonDisabled: false,
       VoteCount: 1,
       CreateVote_SelectedItem: null,
       dialognewagenda: false,
@@ -392,6 +409,7 @@
       methods: {
 
         extractSelection(agenda, selectedItems) {
+        this.buttonDisabled = true;
         let temp = [];
         let t = 0;
         // let i = 0, j = 0, k = 0;
