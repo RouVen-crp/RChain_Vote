@@ -130,11 +130,12 @@
             >
             <!-- card是agenda -->
             
-              <v-card prepend-icon="mdi-vote">
+              <v-card prepend-icon="mdi-calendar" :title="AVote.Agda_Name">
                 <!-- toolbar是agenda的表头，包含删除功能 -->
-                <v-toolbar :title="AVote.Agda_Name" density="compact" color="#ecf0f1">
+                <v-toolbar  density="compact" color="#ecf0f1">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
                       <!-- 添加投票Vote -->
+                      <v-spacer></v-spacer>
                       <v-dialog
                       v-model="dialognewvote"
                       width="1024"
@@ -257,7 +258,7 @@
                     </v-dialog>
 
                     <v-btn
-                    color="primary">
+                    color="primary" @click="extractSelection(AVote, selectedItems)">
                     Submit Vote info
                     </v-btn>
 
@@ -288,22 +289,32 @@
                   <!-- <v-list-subheader :title="card"></v-list-subheader> -->
 
                   <!-- 下面的list-item里是agenda的具体投票项目中的具体选项 -->
-                  <template v-for="v in AVote.Vts_Of_Agda " :key="v.Vt_Name">
+                  <template v-for="(v,index) in AVote.Vts_Of_Agda " :key="v.Vt_Name">
                     <v-list-item >
-                      <v-list-item-title>{{ v.Vt_Name }}</v-list-item-title>
+                      <v-list-item-title variant="tonal">{{ v.Vt_Name }}</v-list-item-title>
                       <template v-slot:prepend>
                         <v-avatar icon="mdi-vote"></v-avatar>
                       </template>
-                        <v-select label="Select" multiple :items="v.Choices">
 
+                      <div>
+                        <v-select label="Select" multiple :items="v.Choices.slice(0, (v.Choices.length)/2)"
+                        variant="underlined"
+                        hint="pick your choice for this vote" persistent-hint chips
+                        v-model="selectedItems[index]">
                         </v-select>
+                      </div>
+                        <template v-for="(c_status, choicemark) in v.Choices.slice((v.Choices.length)/2, v.Choices.length)">
+                          <v-chip v-if="choicemark === 0" class="ma-2" label color="#3498db" >
+                            <v-icon start icon="mdi-label"></v-icon>  
+                            Current Vote Status: </v-chip>
+                          <v-chip v-if="choicemark < v.Choices.length/2"
+                        class="ma-2" color="success" variant="outlined">
+                        {{ 'Choice: ' + v.Choices[0] + ' Chosen: ' + c_status }}
+                        </v-chip>
+                        </template>
+
                     </v-list-item>
   
-                    <!-- <v-divider
-                      v-if="n !== AVote.vcount"
-                      :key="`divider-${n}`"
-                      inset
-                    ></v-divider> -->
                   </template>
                 </v-list>
                 <!-- 提交按钮Submit -->
@@ -344,6 +355,7 @@
       dialogCreateVote: false,
 
       NameOf_NewAgenda: '',
+      selectedItems: [],
       AVotes: [
         { 
           Agda_Name: 'ceshi', vcount: '2',
@@ -351,13 +363,13 @@
             {
               Vt_Name: 'egvt', 
               Choices: [
-                'c1', 'c2', 'c3', '...'
+                'c1', 'c2', '2', '0'
               ]
           },
           {
               Vt_Name: 'egvt2', 
               Choices: [
-                'c1', 'c2', 'c3', '...'
+                'c1', 'c2', '1', '1'
               ]
           }
         ]
@@ -378,6 +390,49 @@
 
 // 下面是方法
       methods: {
+
+        extractSelection(agenda, selectedItems) {
+        let temp = [];
+        let t = 0;
+        // let i = 0, j = 0, k = 0;
+        console.log(selectedItems)
+          for(let i = 0; i < selectedItems.length; i++){ //2
+            temp[i] = []; // 初始化 temp[i]
+            for(let j = 0; j < agenda.Vts_Of_Agda.length; j++){ //2
+              //对于agenda中的每个投票
+              for(let k = 0; k < agenda.Vts_Of_Agda[j].Choices.length; k++){ //4
+              //对于这个投票的每个选项, 将已选择的选项(selected items)和所有的选项进行对比
+              if (selectedItems[i][t] === agenda.Vts_Of_Agda[i].Choices[k]){
+                temp[i][k]='1';//如果选择了这个选项，指示矩阵temp对应位置设1
+                t++;
+               }
+               else temp[i][k]='0';//如果没有选择这个选项，指示矩阵temp对应位置设0
+            }
+            t = 0;
+            }
+          }
+
+          console.log(temp);
+          //设置投票情况
+          for(let i = 0; i < agenda.Vts_Of_Agda.length; i++){
+            let p = agenda.Vts_Of_Agda[i].Choices.length;
+            p = p/2;//只有后半段是投票情况
+            for(let k = 0; k < temp[i].length; k++){
+              let sum = 0;
+              //提取出字符串，更改为int，加和后放回去
+              sum = parseInt(agenda.Vts_Of_Agda[i].Choices[p], 10) + parseInt(temp[i][k], 10);
+              agenda.Vts_Of_Agda[i].Choices[p] = sum.toString();
+            }
+          }
+          temp = [];
+
+          //console debug
+          for(let i = 0; i < agenda.Vts_Of_Agda.length; i++){
+            console.log(`choosing status:`, agenda.Vts_Of_Agda[i].Choices);
+          }
+        // Process the selected items from other v-select components as needed
+      },
+
         returnavotes(stringavote)
         {  
           const newvotes=[];
@@ -433,10 +488,21 @@
           this.dialogCreateVote = true;
         },
 
-        CreateVote(input, name, CurrentAgenda, vc) {
+        CreateVote(input, name, CurrentAgenda) {
         // alert(this.AVotes)
         this.UserInput = [];
         this.NameOf_NewVote = '';
+
+          //input一开始会录入一次什么也没有的空值，往后让一位
+          for(let i = 0; i < input.length - 1; i++){
+              input[i] = input[i+1];
+            }
+            input.pop();
+
+        //初始化choices数组记录投票情况的部分
+            for(let choicL = input.length,j = choicL; j < 2*choicL; j++){
+              input.push('0');
+            }
 
         for (let i = 0; i < this.AVotes.length; i++) {
           console.log('CurrentAgenda:', CurrentAgenda);
@@ -451,6 +517,8 @@
           // this.VotesOf_a_Agenda = [];
           this.dialogCreateVote = false;
           this.dialognewvote = false;
+
+
           this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
         },
 
@@ -559,7 +627,8 @@
     computed: {
       VoteCount() {
         return parseInt(this.CreateVote_SelectedItem, 10);
-      }
+      },
+
     }  
     }
 
