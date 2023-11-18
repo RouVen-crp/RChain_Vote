@@ -85,3 +85,39 @@ app.post('/register', (req, res) => {
       }
   );
 });
+app.post('/showvote', (req, res) => {
+  console.log("showvote");
+
+ 
+ 
+  console.log(req.body.votes);
+  let rho_code = `new addvotes,getvotes,ret in {
+                      @{"vote_factory"}!(*addvotes, *getvotes)
+                     
+                      |
+                      addvotes!("${req.body.votes}", *ret)
+                  }`;
+  rho_deploy.func_deploy(rho_code, 2).then(
+      (ret) => {
+          res.send("\"" + ret + "\"");
+      }
+  );
+});
+app.post('/getvote', (req, res) => {
+  console.log("getvote");
+
+ 
+ 
+  console.log(req.body.votes);
+  let rho_code = `new addvotes,getvotes,ret in {
+                      @{"vote_factory"}!(*addvotes, *getvotes)
+                     
+                      |
+                      getvotes!("${req.body.votes}", *ret)
+                  }`;
+  rho_deploy.func_deploy(rho_code, 2).then(
+      (ret) => {
+          res.send("\"" + ret + "\"");
+      }
+  );
+});
