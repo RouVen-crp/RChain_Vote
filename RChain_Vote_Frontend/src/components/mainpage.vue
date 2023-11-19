@@ -134,7 +134,7 @@
 
         </v-list>
       </v-navigation-drawer>
-      <!-- v-mainÊÇÖĞ¼äµÄÖ÷Ìå²¿·Ö -->
+      <!-- v-mainæ˜¯ä¸­é—´çš„ä¸»ä½“éƒ¨åˆ† -->
       <v-main :style="{ backgroundColor: containerColor}" 
       class="transparent-container " >
         <v-container
@@ -151,13 +151,13 @@
               cols="12"
               color="#ecf0f1" class="transparent-container"
             >
-            <!-- cardÊÇagenda -->
+            <!-- cardæ˜¯agenda -->
             
               <v-card prepend-icon="mdi-calendar" :title="AVote.Agda_Name" class="transparent-container">
-                <!-- toolbarÊÇagendaµÄ±íÍ·£¬°üº¬É¾³ı¹¦ÄÜ -->
+                <!-- toolbaræ˜¯agendaçš„è¡¨å¤´ï¼ŒåŒ…å«åˆ é™¤åŠŸèƒ½ -->
                 <v-toolbar  density="compact" color="#ecf0f1" class="transparent-container">
                   <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-                      <!-- Ìí¼ÓÍ¶Æ±Vote -->
+                      <!-- æ·»åŠ æŠ•ç¥¨Vote -->
                       <v-spacer></v-spacer>
                       <v-dialog
                       v-model="dialognewvote"
@@ -296,7 +296,7 @@
                       ></v-btn>
           
                     </template>
-                      <!-- É¾³ıÒé³ÌAgenda -->
+                      <!-- åˆ é™¤è®®ç¨‹Agenda -->
                         <v-btn
                     prepend-icon="mdi-delete"
                     color="#e74c3c"
@@ -309,11 +309,11 @@
                   
                 </v-toolbar>
                 
-                <!-- ÏÂÃæÊÇÃ¿¸öagendaµÄ¾ßÌåÍ¶Æ±ÏîÄ¿ -->
+                <!-- ä¸‹é¢æ˜¯æ¯ä¸ªagendaçš„å…·ä½“æŠ•ç¥¨é¡¹ç›® -->
                 <v-list lines="one">
                   <!-- <v-list-subheader :title="card"></v-list-subheader> -->
 
-                  <!-- ÏÂÃæµÄlist-itemÀïÊÇagendaµÄ¾ßÌåÍ¶Æ±ÏîÄ¿ÖĞµÄ¾ßÌåÑ¡Ïî -->
+                  <!-- ä¸‹é¢çš„list-itemé‡Œæ˜¯agendaçš„å…·ä½“æŠ•ç¥¨é¡¹ç›®ä¸­çš„å…·ä½“é€‰é¡¹ -->
                   <template v-for="(v,index) in AVote.Vts_Of_Agda " :key="v.Vt_Name">
                     <v-list-item >
                       <v-list-item-title variant="tonal">{{ v.Vt_Name }}</v-list-item-title>
@@ -342,7 +342,7 @@
   
                   </template>
                 </v-list>
-                <!-- Ìá½»°´Å¥Submit -->
+                <!-- æäº¤æŒ‰é’®Submit -->
 
               </v-card>
             </v-col>
@@ -350,7 +350,7 @@
         </v-container>
       </v-main>
 
-      <!-- navigation-drawerÊÇ×ó²àµ¼º½À¸ -->
+      <!-- navigation-draweræ˜¯å·¦ä¾§å¯¼èˆªæ  -->
 
       
     </v-app>
@@ -370,11 +370,11 @@
   <style scoped>
   .app-with-background {
     background-image: url('/imgs/mainbg.jpg');
-    background-size: cover; /* ¿ÉÒÔ¸ù¾İĞèÒªÑ¡ÔñÆäËûÖµ£¬±ÈÈç 'contain' */
+    background-size: cover; /* å¯ä»¥æ ¹æ®éœ€è¦é€‰æ‹©å…¶ä»–å€¼ï¼Œæ¯”å¦‚ 'contain' */
     background-position: center center;
   }
   .transparent-container {
-    background: rgba(255, 255, 255, 0.3); /* µ÷Õû×îºóÒ»¸öÖµ (0.5) ÒÔ¸Ä±äÍ¸Ã÷¶È£¬·¶Î§ÊÇ 0£¨ÍêÈ«Í¸Ã÷£©µ½ 1£¨ÍêÈ«²»Í¸Ã÷£© */
+    background: rgba(255, 255, 255, 0.3); /* è°ƒæ•´æœ€åä¸€ä¸ªå€¼ (0.5) ä»¥æ”¹å˜é€æ˜åº¦ï¼ŒèŒƒå›´æ˜¯ 0ï¼ˆå®Œå…¨é€æ˜ï¼‰åˆ° 1ï¼ˆå®Œå…¨ä¸é€æ˜ï¼‰ */
   }
 
   ::v-deep .v-navigation-drawer {
@@ -387,7 +387,7 @@
   import {post} from "@/router/axiosuse";
     export default {
       
-//ÏÂÃæÊÇÊı¾İ
+//ä¸‹é¢æ˜¯æ•°æ®
       data: () => ({
         avaUrl: '/imgs/mainbg1.jpg',
         imageUrl: '/imgs/mainbg.jpg',
@@ -432,17 +432,17 @@
     }),
 
     mounted() {
-    // ÔÚÒ³Ãæ½øÈëºóÖ´ĞĞµÄ´úÂë
+    // åœ¨é¡µé¢è¿›å…¥åæ‰§è¡Œçš„ä»£ç 
     console.log('huanying');
     
-    // µ÷ÓÃÄãÏëÔËĞĞµÄº¯Êı
+    // è°ƒç”¨ä½ æƒ³è¿è¡Œçš„å‡½æ•°
     this.getvotes();
   },
 
-// ÏÂÃæÊÇ·½·¨
+// ä¸‹é¢æ˜¯æ–¹æ³•
       methods: {
 
-        extractSelection(agenda, selectedItems) { //Ñ¡ÏîÔİÊ±Ö»Ö§³ÖË³ĞòÑ¡Ôñ
+        extractSelection(agenda, selectedItems) { //é€‰é¡¹æš‚æ—¶åªæ”¯æŒé¡ºåºé€‰æ‹©
           this.subloading = true;
           this.buttonDisabled = true;
           let temp = [];
@@ -450,30 +450,30 @@
         // let i = 0, j = 0, k = 0;
           console.log(selectedItems)
           for(let i = 0; i < selectedItems.length; i++){ //2
-            temp[i] = []; // ³õÊ¼»¯ temp[i]
+            temp[i] = []; // åˆå§‹åŒ– temp[i]
             //for(let j = 0; j < agenda.Vts_Of_Agda.length; j++){ //2
-              //¶ÔÓÚagendaÖĞµÄÃ¿¸öÍ¶Æ±
+              //å¯¹äºagendaä¸­çš„æ¯ä¸ªæŠ•ç¥¨
               for(let k = 0; k < agenda.Vts_Of_Agda[i].Choices.length/2; k++){ //4
-              //¶ÔÓÚÕâ¸öÍ¶Æ±µÄÃ¿¸öÑ¡Ïî, ½«ÒÑÑ¡ÔñµÄÑ¡Ïî(selected items)ºÍËùÓĞµÄÑ¡Ïî½øĞĞ¶Ô±È
+              //å¯¹äºè¿™ä¸ªæŠ•ç¥¨çš„æ¯ä¸ªé€‰é¡¹, å°†å·²é€‰æ‹©çš„é€‰é¡¹(selected items)å’Œæ‰€æœ‰çš„é€‰é¡¹è¿›è¡Œå¯¹æ¯”
               // let count = selectedItems[i].length
               console.log('test lan'+selectedItems[i])
               if (selectedItems[i][t] === agenda.Vts_Of_Agda[i].Choices[k]){
-                temp[i][k]='1';//Èç¹ûÑ¡ÔñÁËÕâ¸öÑ¡Ïî£¬Ö¸Ê¾¾ØÕótemp¶ÔÓ¦Î»ÖÃÉè1
-                // selectedItems[i][t] = '##' //´ú±í±»¼ì²â¹ıÁË
+                temp[i][k]='1';//å¦‚æœé€‰æ‹©äº†è¿™ä¸ªé€‰é¡¹ï¼ŒæŒ‡ç¤ºçŸ©é˜µtempå¯¹åº”ä½ç½®è®¾1
+                // selectedItems[i][t] = '##' //ä»£è¡¨è¢«æ£€æµ‹è¿‡äº†
                 t++;
                }
-               else temp[i][k]='0';//Èç¹ûÃ»ÓĞÑ¡ÔñÕâ¸öÑ¡Ïî£¬Ö¸Ê¾¾ØÕótemp¶ÔÓ¦Î»ÖÃÉè0
+               else temp[i][k]='0';//å¦‚æœæ²¡æœ‰é€‰æ‹©è¿™ä¸ªé€‰é¡¹ï¼ŒæŒ‡ç¤ºçŸ©é˜µtempå¯¹åº”ä½ç½®è®¾0
             }
             t = 0;
           }
 
           console.log(temp);
-          //ÉèÖÃÍ¶Æ±Çé¿ö
+          //è®¾ç½®æŠ•ç¥¨æƒ…å†µ
           for(let i = 0; i < agenda.Vts_Of_Agda.length; i++){
-            let p = agenda.Vts_Of_Agda[i].Choices.length/2;//Ö»ÓĞºó°ë¶ÎÊÇÍ¶Æ±Çé¿ö
+            let p = agenda.Vts_Of_Agda[i].Choices.length/2;//åªæœ‰ååŠæ®µæ˜¯æŠ•ç¥¨æƒ…å†µ
             for(let k = 0; k < temp[i].length; k++, p++){
               let sum = 0;
-              //ÌáÈ¡³ö×Ö·û´®£¬¸ü¸ÄÎªint£¬¼ÓºÍºó·Å»ØÈ¥
+              //æå–å‡ºå­—ç¬¦ä¸²ï¼Œæ›´æ”¹ä¸ºintï¼ŒåŠ å’Œåæ”¾å›å»
               sum = parseInt(agenda.Vts_Of_Agda[i].Choices[p], 10) + parseInt(temp[i][k], 10);
               agenda.Vts_Of_Agda[i].Choices[p] = sum.toString();
             }
@@ -509,8 +509,8 @@
                
                 Vt_Name: avt[0],
               
-                //Choices: avt[1].split('####'),
-                Choices: ['c1', 'c2', 'c3', '...'],
+                Choices: avt[1].split('####'),
+                //Choices: ['c1', 'c2', 'c3', '...'],
               }
               vtsagda.push(newvts);
             }
@@ -549,13 +549,13 @@
         this.UserInput = [];
         this.NameOf_NewVote = '';
 
-          //inputÒ»¿ªÊ¼»áÂ¼ÈëÒ»´ÎÊ²Ã´Ò²Ã»ÓĞµÄ¿ÕÖµ£¬ÍùºóÈÃÒ»Î»
+          //inputä¸€å¼€å§‹ä¼šå½•å…¥ä¸€æ¬¡ä»€ä¹ˆä¹Ÿæ²¡æœ‰çš„ç©ºå€¼ï¼Œå¾€åè®©ä¸€ä½
           for(let i = 0; i < input.length - 1; i++){
               input[i] = input[i+1];
             }
             input.pop();
 
-        //³õÊ¼»¯choicesÊı×é¼ÇÂ¼Í¶Æ±Çé¿öµÄ²¿·Ö
+        //åˆå§‹åŒ–choicesæ•°ç»„è®°å½•æŠ•ç¥¨æƒ…å†µçš„éƒ¨åˆ†
             for(let choicL = input.length,j = choicL; j < 2*choicL; j++){
               input.push('0');
             }
@@ -564,15 +564,15 @@
           console.log('CurrentAgenda:', CurrentAgenda);
           console.log('this.AVotes[i].Agda_Name:', this.AVotes[i].Agda_Name);
           if (this.AVotes[i].Agda_Name === CurrentAgenda) {
-            // ÔÚÕÒµ½µÄ¶ÔÏóµÄ Vts_Of_Agda Êı×éÖĞÌí¼ÓĞÂÊı¾İ
+            // åœ¨æ‰¾åˆ°çš„å¯¹è±¡çš„ Vts_Of_Agda æ•°ç»„ä¸­æ·»åŠ æ–°æ•°æ®
             this.AVotes[i].Vts_Of_Agda.push({ Vt_Name: name, Choices: input });
-            break; // ÕÒµ½Æ¥ÅäµÄ Agda_Name ºó½áÊøÑ­»·
+            break; // æ‰¾åˆ°åŒ¹é…çš„ Agda_Name åç»“æŸå¾ªç¯
           }
         }
 
           // this.VotesOf_a_Agenda = [];
           ;
-          this.AVotes = [...this.AVotes]; // ´¥·¢ AVotes µÄÖØĞÂäÖÈ¾
+          this.AVotes = [...this.AVotes]; // è§¦å‘ AVotes çš„é‡æ–°æ¸²æŸ“
           setTimeout(() => (this.newvloading = false, this.dialognewvote = false, this.dialogCreateVote = false), 10000)
         },
 
@@ -591,7 +591,7 @@
           Vts_Of_Agda: [],
         };
         this.AVotes.push(cloneDeep(newcard));
-        // ´¥·¢ AVotes µÄÖØĞÂäÖÈ¾
+        // è§¦å‘ AVotes çš„é‡æ–°æ¸²æŸ“
          this.AVotes = [...this.AVotes]; 
       },
 
