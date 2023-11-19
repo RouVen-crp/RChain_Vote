@@ -47,7 +47,6 @@ yarn
 ```
 # yarn
 yarn dev
-
 ```
 
 #### 1.2 Compiles and minifies for production
