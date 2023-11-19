@@ -38,17 +38,8 @@ git clone https://github.com/RouVen-crp/RChain_Vote.git
 ### 1. Frontend Setup（安装项目依赖）
 
 ```
-# yarn
+# 只能使用yarn进行环境配置（yarn 1.22.19）
 yarn
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# pnpm
-bun install
 ```
 
 #### 1.1 Compiles and hot-reloads for development
@@ -57,14 +48,6 @@ bun install
 # yarn
 yarn dev
 
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# bun
-bun run dev
 ```
 
 #### 1.2 Compiles and minifies for production
@@ -72,15 +55,6 @@ bun run dev
 ```
 # yarn
 yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# bun
-bun run build
 ```
 
 #### 1.3 Lints and fixes files
@@ -88,15 +62,6 @@ bun run build
 ```
 # yarn
 yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-
-# bun
-bun run lint
 ```
 
 #### 1.4 Customize configuration
