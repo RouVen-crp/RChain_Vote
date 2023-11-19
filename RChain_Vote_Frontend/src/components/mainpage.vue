@@ -255,10 +255,10 @@
                     </v-dialog>
 
                     <v-btn
-                    color="primary" :disabled="buttonDisabled" @click="extractSelection(AVote, selectedItems)">
+                    color="primary"  @click="extractSelection(AVote, selectedItems)">
                     Submit Vote info
                     </v-btn>
-
+                    <!-- :disabled="buttonDisabled" -->
                   <v-menu :location="end">
                     <template v-slot:activator="{ props }">
           
@@ -306,7 +306,7 @@
                             Current Vote Status: </v-chip>
                           <v-chip v-if="choicemark < v.Choices.length/2"
                         class="ma-2" color="success" variant="outlined">
-                        {{ 'Choice: ' + v.Choices[0] + ' Chosen: ' + c_status }}
+                        {{ 'Choice: ' + v.Choices[choicemark] + ' Chosen: ' + c_status }}
                         </v-chip>
                         </template>
 
@@ -377,18 +377,18 @@
         { 
           Agda_Name: 'ceshi', vcount: '2',
           Vts_Of_Agda: [
-            {
-              Vt_Name: 'egvt', 
-              Choices: [
-                'c1', 'c2', '2', '0'
-              ]
-          },
-          {
-              Vt_Name: 'egvt2', 
-              Choices: [
-                'c1', 'c2', '1', '1'
-              ]
-          }
+          //   {
+          //     Vt_Name: 'egvt', 
+          //     Choices: [
+          //       'c1', 'c2', '2', '0'
+          //     ]
+          // },
+          // {
+          //     Vt_Name: 'egvt2', 
+          //     Choices: [
+          //       'c1', 'c2', '1', '1'
+          //     ]
+          // }
         ]
       },
      
@@ -408,7 +408,7 @@
 // 下面是方法
       methods: {
 
-        extractSelection(agenda, selectedItems) {
+        extractSelection(agenda, selectedItems) { //选项暂时只支持顺序选择
         this.buttonDisabled = true;
         let temp = [];
         let t = 0;
@@ -418,14 +418,19 @@
             temp[i] = []; // 初始化 temp[i]
             for(let j = 0; j < agenda.Vts_Of_Agda.length; j++){ //2
               //对于agenda中的每个投票
-              for(let k = 0; k < agenda.Vts_Of_Agda[j].Choices.length; k++){ //4
+              for(let k = 0; k < agenda.Vts_Of_Agda[j].Choices.length/2; k++){ //4
               //对于这个投票的每个选项, 将已选择的选项(selected items)和所有的选项进行对比
+              let count = selectedItems[i].length
               if (selectedItems[i][t] === agenda.Vts_Of_Agda[i].Choices[k]){
                 temp[i][k]='1';//如果选择了这个选项，指示矩阵temp对应位置设1
+                // selectedItems[i][t] = '##' //代表被检测过了
                 t++;
                }
                else temp[i][k]='0';//如果没有选择这个选项，指示矩阵temp对应位置设0
             }
+            // if(t < count){
+
+            // }
             t = 0;
             }
           }
@@ -433,9 +438,8 @@
           console.log(temp);
           //设置投票情况
           for(let i = 0; i < agenda.Vts_Of_Agda.length; i++){
-            let p = agenda.Vts_Of_Agda[i].Choices.length;
-            p = p/2;//只有后半段是投票情况
-            for(let k = 0; k < temp[i].length; k++){
+            let p = agenda.Vts_Of_Agda[i].Choices.length/2;//只有后半段是投票情况
+            for(let k = 0; k < temp[i].length; k++, p++){
               let sum = 0;
               //提取出字符串，更改为int，加和后放回去
               sum = parseInt(agenda.Vts_Of_Agda[i].Choices[p], 10) + parseInt(temp[i][k], 10);
@@ -448,6 +452,7 @@
           for(let i = 0; i < agenda.Vts_Of_Agda.length; i++){
             console.log(`choosing status:`, agenda.Vts_Of_Agda[i].Choices);
           }
+          selectedItems = []
         // Process the selected items from other v-select components as needed
       },
 
@@ -535,7 +540,6 @@
           // this.VotesOf_a_Agenda = [];
           this.dialogCreateVote = false;
           this.dialognewvote = false;
-
 
           this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
         },
