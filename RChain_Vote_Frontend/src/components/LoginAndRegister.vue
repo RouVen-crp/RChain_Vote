@@ -1,6 +1,5 @@
 <template>
     <v-app >
-      
         <v-container fluid align="center" class="fill-height" :style="{ backgroundImage: 'url(' + imageUrl + ')' }" >
           <v-row no-gutters align="center">
             <v-col  align-self="center">
@@ -141,7 +140,7 @@
     data: () => ({
       imageUrl: '/imgs/h3.jpg',
       step: 1,
-      loading: false
+      loading: false,
     }),
     methods: {
         Logged() {
@@ -149,7 +148,7 @@
         },
         login(){
           this.loading = true
-          setTimeout(() => (this.loading = false), 3000)
+          
           console.log("login")
           post(
             '/login',
@@ -169,11 +168,11 @@
               alert(res.data);
             }
           })
+          setTimeout(() => (this.loading = false), 10000)
         },
         register(){
           console.log("register")
           this.loading = true
-          setTimeout(() => (this.loading = false), 3000)
           post(
             '/Register',
             {
@@ -189,6 +188,7 @@
             console.log(typeof res.data);
             
           })
+          setTimeout(() => (this.loading = false), 10000)
         }
       
     },

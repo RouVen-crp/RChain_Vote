@@ -10,11 +10,12 @@
         >
           <v-avatar
             class="mb-4"
-            color="grey-darken-1"
             size="64"
           >
+          <img :src="avaUrl" alt="Avatar Image">
         </v-avatar>  
-        <div text-color="#2c3e50">Username here</div>
+        <div text-color="#2c3e50">username</div>
+        <!-- {{ sharedValue }} -->
         </v-card>
   
         <v-divider></v-divider>
@@ -40,7 +41,7 @@
             <v-dialog
             v-model="dialognewagenda"
             activator="parent"
-            persistent
+            persistent 
             width="1024">
   
             <v-card color="#ecf0f1">
@@ -61,16 +62,6 @@
                         v-model="NameOf_NewAgenda"
                       ></v-text-field>
                     </v-col>
-  
-  
-                    <!-- <v-col cols="12" sm="6" md="6">
-                      <v-text-field
-                        label="Number of Votes in your new Agenda*"
-                        v-model="VoteNumOf_NewAg"
-                        required
-                        clearable
-                      ></v-text-field>
-                    </v-col> -->
                     
                   </v-row>
                 </v-container>
@@ -88,6 +79,7 @@
                 <v-btn
                   color="#3498db"
                   :ripple="{ class: 'text-green' }"
+                  :loading="newaloading"
                   @click="submitAgenda(NameOf_NewAgenda);showvote()"
                 >
                   Submit
@@ -104,6 +96,40 @@
         title="Help"
         link
         >
+
+            <v-dialog activator="parent">
+              <v-stepper :items="['Step 1', 'Step 2', 'Step 3','Step 4']" width="720">
+                <template v-slot:item.1>
+                  <v-card title="Make your own agenda" flat>
+                  <p>Choose the button on your left and name your new agenda</p>
+                  <br /> <p>Insert your agenda's name, and have fun!</p> 
+                 </v-card>
+                </template>
+              
+                <template v-slot:item.2>
+                  <v-card title="Insert a new vote into your agenda" flat>
+                    <p>Click the "Add Vote" button to add a new vote to the specified agenda. Enter the name for the new vote; 
+                      </p><br /><p>support customizing the number and content of options; enable multiple selections.</p>
+                  </v-card>
+                </template>
+              
+                <template v-slot:item.3>
+                  <v-card title="Submit your vote! " flat>
+                    <p>After creating the voting content, you can proceed with the voting. </p>
+                     <p>Once you have completed voting, click on "Submit Vote Info" in the top right corner to submit your voting details.</p>  
+                    <p>The voting results will be synchronized in real-time to other users.</p>
+                  </v-card>
+                </template>
+
+                <template v-slot:item.4>
+                  <v-card title="Delete your agenda" flat>
+                    <p>Click on the three vertical dots in the upper right corner to delete the agenda.</p>
+                  </v-card>
+                </template>
+
+              </v-stepper>
+            </v-dialog>
+
         </v-list-item>
 
         </v-list>
@@ -242,6 +268,7 @@
                               variant="text"
                               @click="CreateVote(UserInput, NameOf_NewVote, targetAgenda, vc);showvote()"
                               :ripple="{ class: 'text-green' }"
+                              :loading="newvloading"
                             >
                               SUBMIT
                             </v-btn>
@@ -255,7 +282,8 @@
                     </v-dialog>
 
                     <v-btn
-                    color="primary"  @click="extractSelection(AVote, selectedItems)">
+                    color="primary"  @click="extractSelection(AVote, selectedItems)"
+                    :loading="subloading">
                     Submit Vote info
                     </v-btn>
                     <!-- :disabled="buttonDisabled" -->
@@ -333,6 +361,7 @@
     import { ref } from 'vue'
     import addVote from '@/components/AddVote.vue'
     import cloneDeep from 'lodash/cloneDeep';
+  //  import { sharedValue } from '@/components/LoginAndRegister.vue';
 
     const drawer = ref(null)
 
@@ -360,16 +389,20 @@
       
 //下面是数据
       data: () => ({
+        avaUrl: '/imgs/mainbg1.jpg',
         imageUrl: '/imgs/mainbg.jpg',
         containerColor: '#ecf0f1',
         ListColor: '#2c3e50',
+        newaloading: false,
+        newvloading: false,
+        subloading: false,
         // VotesOf_a_Agenda: [],
         buttonDisabled: false,
-      VoteCount: 1,
-      CreateVote_SelectedItem: null,
-      dialognewagenda: false,
-      dialognewvote: false,
-      dialogCreateVote: false,
+        VoteCount: 1,
+        CreateVote_SelectedItem: null,
+        dialognewagenda: false,
+        dialognewvote: false,
+        dialogCreateVote: false,
 
       NameOf_NewAgenda: '',
       selectedItems: [],
@@ -382,6 +415,7 @@
           //     Choices: [
           //       'c1', 'c2', '2', '0'
           //     ]
+          
           // },
           // {
           //     Vt_Name: 'egvt2', 
@@ -409,18 +443,20 @@
       methods: {
 
         extractSelection(agenda, selectedItems) { //选项暂时只支持顺序选择
-        this.buttonDisabled = true;
-        let temp = [];
-        let t = 0;
+          this.subloading = true;
+          this.buttonDisabled = true;
+          let temp = [];
+          let t = 0;
         // let i = 0, j = 0, k = 0;
-        console.log(selectedItems)
+          console.log(selectedItems)
           for(let i = 0; i < selectedItems.length; i++){ //2
             temp[i] = []; // 初始化 temp[i]
-            for(let j = 0; j < agenda.Vts_Of_Agda.length; j++){ //2
+            //for(let j = 0; j < agenda.Vts_Of_Agda.length; j++){ //2
               //对于agenda中的每个投票
-              for(let k = 0; k < agenda.Vts_Of_Agda[j].Choices.length/2; k++){ //4
+              for(let k = 0; k < agenda.Vts_Of_Agda[i].Choices.length/2; k++){ //4
               //对于这个投票的每个选项, 将已选择的选项(selected items)和所有的选项进行对比
-              let count = selectedItems[i].length
+              // let count = selectedItems[i].length
+              console.log('test lan'+selectedItems[i])
               if (selectedItems[i][t] === agenda.Vts_Of_Agda[i].Choices[k]){
                 temp[i][k]='1';//如果选择了这个选项，指示矩阵temp对应位置设1
                 // selectedItems[i][t] = '##' //代表被检测过了
@@ -428,11 +464,7 @@
                }
                else temp[i][k]='0';//如果没有选择这个选项，指示矩阵temp对应位置设0
             }
-            // if(t < count){
-
-            // }
             t = 0;
-            }
           }
 
           console.log(temp);
@@ -447,13 +479,13 @@
             }
           }
           temp = [];
-
           //console debug
           for(let i = 0; i < agenda.Vts_Of_Agda.length; i++){
             console.log(`choosing status:`, agenda.Vts_Of_Agda[i].Choices);
           }
-          selectedItems = []
+          // selectedItems = []
         // Process the selected items from other v-select components as needed
+        setTimeout(() => (this.subloading = false), 10000)
       },
 
         returnavotes(stringavote)
@@ -512,6 +544,7 @@
         },
 
         CreateVote(input, name, CurrentAgenda) {
+          this.newvloading = true;
         // alert(this.AVotes)
         this.UserInput = [];
         this.NameOf_NewVote = '';
@@ -538,15 +571,16 @@
         }
 
           // this.VotesOf_a_Agenda = [];
-          this.dialogCreateVote = false;
-          this.dialognewvote = false;
-
+          ;
           this.AVotes = [...this.AVotes]; // 触发 AVotes 的重新渲染
+          setTimeout(() => (this.newvloading = false, this.dialognewvote = false, this.dialogCreateVote = false), 10000)
         },
 
         submitAgenda(name) {
+          this.newaloading = true;
           this.AddNewAgenda(name);
-          this.dialognewagenda = false;
+          setTimeout(() => (this.newaloading = false, this.dialognewagenda = false), 10000)
+          // setTimeout(() => (), 10)
       },
 
       AddNewAgenda(name) {
