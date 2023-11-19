@@ -112,6 +112,10 @@ npm install axios —s
 ## B. 后端配置
 
 > 进入文件目录：/RChain_Vote/RChain_Vote_Server
+> 打开终端执行命令：
+```
+npm install cors -s
+```
 
 ### 1. Prerequisites
 
